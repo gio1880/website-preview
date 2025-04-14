@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Future</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/4.1.17/framer-motion.umd.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+        .modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="p-8 space-y-8 bg-[#fffdf4] scroll-smooth">
+
+    <!-- Navigation Menu -->
+    <nav class="flex justify-between items-center text-blue-800 font-semibold text-lg bg-[#fffdf4] py-4 px-6 shadow-sm">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center">
+            <img src="images/ai future logo.png" alt="AI Future Logo" class="h-12 mr-3">
+            <span class="text-xl font-bold">AI Future</span>
+        </a>
+        <!-- Links -->
+        <div class="flex gap-6">
+            <a href="#home" class="hover:text-blue-600">Home</a>
+            <a href="#programs" class="hover:text-blue-600">Programs</a>
+            <a href="#calendar" class="hover:text-blue-600">Calendar</a>
+            <a href="#events" class="hover:text-blue-600">Events</a>
+            <a href="#enroll" class="hover:text-blue-600">Enroll</a>
+            <a href="#contact" class="hover:text-blue-600">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center text-center">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="videos/landingpage v2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-600/70"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-white px-4">
+            <h1 class="text-5xl font-bold mb-4">Welcome to AI Future</h1>
+            <p class="text-lg mb-6">
+                Empowering the next generation through robotics and innovation
+            </p>
+            <a href="#enroll" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                Enroll Now
+            </a>
+        </div>
+    </section>
+    
+    <!-- Summer Camp Section -->
+    <section id="summer-camp" class="text-center bg-blue-100 py-8">
+        <h2 class="text-3xl font-semibold text-blue-800 mb-4">Summer Camp 2025</h2>
+        <p class="text-gray-700 text-lg mb-6">
+            Join us for an exciting and immersive summer experience exploring robotics, design, and innovation!
+        </p>
+        <div class="max-w-4xl mx-auto">
+            <img
+                src="images/summer_camp.jpg"
+                alt="Summer Camp"
+                class="w-full h-64 object-cover rounded-lg shadow-md mb-6"
+            />
+            <p class="text-gray-600 text-md mb-4">
+                Our summer camp is designed for students of all ages to learn, create, and have fun with robotics. Activities include hands-on workshops, team challenges, and exciting competitions.
+            </p>
+            <p class="text-gray-600 text-md mb-6">
+                <strong>Dates:</strong> July 1 - August 21, 2025<br>
+                <strong>Location:</strong> AI Future Robotics Center, Tech City
+            </p>
+            <a
+                href="#enroll"
+                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            >
+                Enroll Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Robotics Classes Section -->
+    <section id="featured" class="text-center">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Featured Robotics Classes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="featured-container"></div>
+    </section>
+        <!-- Achievements Section -->
+    <section id="achievements" class="text-center bg-gray-100 py-8">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Our Achievements</h2>
+        <p class="text-gray-600 mb-6">
+            Celebrating the success of our competitive teams in robotics and innovation!
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Achievement 1 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">Regional Robotics Champions</h3>
+                <p class="text-gray-600 mt-2">
+                    Our FIRST LEGO League (FLL) team won the regional championship in 2024, showcasing their creativity and teamwork.
+                </p>
+            </div>
+            <!-- Achievement 2 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">Innovation Award</h3>
+                <p class="text-gray-600 mt-2">
+                    Our FIRST Tech Challenge (FTC) team received the Innovation Award for their groundbreaking robot design.
+                </p>
+            </div>
+            <!-- Achievement 3 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">National Robotics Finalists</h3>
+                <p class="text-gray-600 mt-2">
+                    Our robotics teams made it to the national finals, competing against the best teams in the country.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programs Section -->
+    <section id="programs">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4 text-center">Our Programs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="programs-container"></div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="text-center">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-2">Calendar</h2>
+        <p class="text-gray-600 mb-4">
+            Stay updated with important dates, class schedules, and holidays.
+        </p>
+        <div class="w-full bg-gray-100 p-4 rounded-xl shadow">
+            <p class="text-gray-500 italic">[Calendar Widget Placeholder]</p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="events" class="text-center bg-gray-100 py-8">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Upcoming Events</h2>
+        <p class="text-gray-600 mb-6">
+            Don't miss out on our upcoming competitions, showcases, and workshops.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Event 1 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">FLL Parent Info Night</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>Sep 15</strong></p>
+                <p class="text-gray-600 mt-2">
+                    Learn about the FIRST LEGO League program and how your child can participate.
+                </p>
+            </div>
+            <!-- Event 2 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">FTC Kickoff Day</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>Sep 20</strong></p>
+                <p class="text-gray-600 mt-2">
+                    Join us for the official kickoff of the FIRST Tech Challenge season.
+                </p>
+            </div>
+            <!-- Event 3 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">Robotics Showcase</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>Oct 10</strong></p>
+                <p class="text-gray-600 mt-2">
+                    See our students' amazing robotics projects and innovations.
+                </p>
+            </div>
+            <!-- Event 4 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">Winter Camp Registration Opens</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>Nov 1</strong></p>
+                <p class="text-gray-600 mt-2">
+                    Register early for our exciting winter camp programs.
+                </p>
+            </div>
+            <!-- Event 5 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">Spring Break Camp</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>Apr 7 - Apr 11</strong></p>
+                <p class="text-gray-600 mt-2">
+                    A fun and educational camp during spring break for all age groups.
+                </p>
+            </div>
+            <!-- Event 6 -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="text-lg font-bold text-blue-700">End of Year Showcase</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>May 24</strong></p>
+                <p class="text-gray-600 mt-2">
+                    Celebrate the achievements of our students at the end-of-year showcase.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="text-center bg-gray-100 py-8">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Contact Us</h2>
+        <p class="text-gray-600 mb-6">
+            Have questions or need more information? Reach out to us!
+        </p>
+        <form class="max-w-lg mx-auto space-y-4">
+            <div>
+                <label for="name" class="block text-left text-gray-700 font-medium">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
+                    placeholder="Your Name"
+                    required
+                />
+            </div>
+            <div>
+                <label for="email" class="block text-left text-gray-700 font-medium">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
+                    placeholder="Your Email"
+                    required
+                />
+            </div>
+            <div>
+                <label for="message" class="block text-left text-gray-700 font-medium">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
+                    rows="4"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+            </div>
+            <button
+                type="submit"
+                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            >
+                Send Message
+            </button>
+        </form>
+    </section>
+
+    <!-- Program Detail Modal -->
+    <div class="modal" id="program-modal">
+        <div class="bg-white rounded-2xl shadow-lg max-w-lg p-6">
+            <h3 class="text-2xl font-semibold text-blue-800" id="modal-title"></h3>
+            <p class="text-gray-700 mt-2" id="modal-description"></p>
+            <p class="text-sm text-gray-500 mt-2" id="modal-age-range"></p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6 mt-10">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
+            <div>
+                <h4 class="text-lg font-bold">AI Future</h4>
+                <p class="mt-2 text-sm">123 Robotics Way, Tech City, NY 10001</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold">Quick Links</h4>
+                <ul class="mt-2 space-y-1 text-sm">
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#programs" class="hover:underline">Programs</a></li>
+                    <li><a href="#calendar" class="hover:underline">Calendar</a></li>
+                    <li><a href="#events" class="hover:underline">Events</a></li>
+                    <li><a href="#enroll" class="hover:underline">Enroll</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold">Connect</h4>
+                <div class="flex justify-center md:justify-start gap-4 mt-2">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="mt-2 text-sm">Email: info@aifuture.org</p>
+            </div>
+        </div>
+        <p class="text-center text-sm mt-6">© <span id="year"></span> AI Future. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const programs = [
+        {
+                title: "Summer Camp",
+                description: "A fun and immersive summer experience exploring robotics, design, and innovation. Activities for all age levels.",
+                ageRange: "All Ages",
+                image: "images/summer_camp.jpg",
+            },
+            {
+                title: "Chess Program",
+                description: "Learn strategy, critical thinking, and problem-solving through our engaging chess program.",
+                ageRange: "Ages 6-18",
+                image: "images/Chess_pieces_close_up.jpg",
+            },
+            {
+                title: "Debate Program",
+                description: "Develop public speaking, critical thinking, and persuasive skills in our debate program.",
+                ageRange: "Ages 10-18",
+                image: "images/debate club.jpg",
+            },
+            {
+                title: "Test Prep Program",
+                description: "Prepare for standardized tests with expert guidance and personalized study plans.",
+                ageRange: "Ages 14-18",
+                image: "images/SAT ACT Club.webp",
+            },
+            {
+                title: "SPIKE Essential",
+                description: "For younger students (PreK-2nd grade). Learn basic engineering and programming using LEGO SPIKE Essential kits.",
+                ageRange: "Ages 4-7",
+                image: "images/FLL_Explore_Logo_v2.svg.png",
+            },
+            {
+                title: "SPIKE Prime",
+                description: "Intermediate robotics class (Grades 3-5). Build smarter robots and solve real-world problems.",
+                ageRange: "Ages 8-10",
+                image: "images/spike prime.jpg",
+            },
+            {
+                title: "FIRST LEGO League (FLL)",
+                description: "Competitive robotics for upper elementary and middle school students. Focus on innovation, teamwork, and problem solving.",
+                ageRange: "Ages 9-14",
+                image: "images/fll-logo-horizontal.png",
+            },
+            {
+                title: "FIRST Tech Challenge (FTC)",
+                description: "Advanced robotics competition team for middle and high school students. Learn engineering, design, and coding.",
+                ageRange: "Ages 12-18",
+                image: "images/FTC-Vertical.png",
+            },
+            
+        ];
+
+        const programsContainer = document.getElementById("programs-container");
+        const featuredContainer = document.getElementById("featured-container");
+        const modal = document.getElementById("program-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDescription = document.getElementById("modal-description");
+        const modalAgeRange = document.getElementById("modal-age-range");
+
+        function openModal(program) {
+            modalTitle.textContent = program.title;
+            modalDescription.textContent = program.description;
+            modalAgeRange.textContent = `Recommended: ${program.ageRange}`;
+            modal.classList.add("active");
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+        }
+
+        programs.forEach((program) => {
+            const programCard = document.createElement("div");
+            programCard.className = "cursor-pointer";
+            programCard.innerHTML = `
+                <div class="rounded-2xl shadow-md overflow-hidden">
+                    <img src="${program.image}" alt="${program.title}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-blue-700">${program.title}</h3>
+                        <p class="text-sm text-gray-600 mt-1">${program.ageRange}</p>
+                    </div>
+                </div>
+            `;
+
+            // Redirect to fll.html for the FLL program
+            if (program.title === "FIRST LEGO League (FLL)") {
+                programCard.onclick = () => {
+                    window.location.href = "fll.html";
+                };
+            } else {
+                // Open modal for other programs
+                programCard.onclick = () => openModal(program);
+            }
+
+            programsContainer.appendChild(programCard);
+        });
+
+        programs
+            .filter((program) =>
+                ["SPIKE Essential", "FIRST LEGO League (FLL)", "FIRST Tech Challenge (FTC)"].includes(program.title)
+            )
+            .forEach((program) => {
+                const featuredCard = document.createElement("div");
+                featuredCard.className = "cursor-pointer";
+                featuredCard.innerHTML = `
+                    <div class="rounded-2xl shadow-md overflow-hidden">
+                        <img src="${program.image}" alt="${program.title}" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-blue-700">${program.title}</h3>
+                            <p class="text-sm text-gray-600 mt-1">${program.ageRange}</p>
+                        </div>
+                    </div>
+                `;
+                featuredCard.onclick = () => openModal(program);
+                featuredContainer.appendChild(featuredCard);
+            });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
