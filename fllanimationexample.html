@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scroll Cinematic Fade Transition</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .section {
+      scroll-snap-align: start;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">Section 1: Welcome to the cinematic scroll ✨</div>
+  <div class="section">Section 2: This background stays still as we move.</div>
+  <div class="section">Section 3: Clean, smooth, immersive.</div>
+  <div class="section">Section 4: The elements float in like magic 🚀</div>
+  <div class="section">Section 5: You made it 🎉</div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
