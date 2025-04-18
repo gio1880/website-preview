@@ -57,52 +57,140 @@
             </div>
         </div>
     </section>
-    <!-- Requirements Section -->
-    <section id="requirements" class="max-w-4xl mx-auto space-y-8">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Requirements</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                To join our summer camp, children must be between the ages of 6 and 14. Parents are required to complete a registration form and provide emergency contact information. Campers should bring their own lunch, water bottle, and sunscreen daily.
-            </p>
-        </div>
-    </section>
-    <!-- Curriculum Section -->
-    <section id="curriculum" class="max-w-4xl mx-auto space-y-8">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Our Curriculum</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                Our summer camp offers a diverse curriculum designed to engage and inspire children of all ages. Activities include arts and crafts, sports, science experiments, team-building exercises, and more. Each week has a unique theme to keep the experience fresh and exciting!
-            </p>
-            <!-- Classes Slideshow -->
-            <div class="relative">
-                <div class="overflow-hidden rounded-lg">
-                    <div class="flex transition-transform duration-500 ease-in-out" id="classes-slides">
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-100 text-blue-800 font-bold text-lg">
-                            LEGO Spike Prime
+    <!-- Requirements and Details Section -->
+    <section id="requirements-details" class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            <!-- Calendar Section -->
+            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">Program Calendar</h2>
+                <div class="relative group"></div>
+                <p class="text-gray-700 text-base">
+                    Check out our weekly schedule packed with fun activities, trips, and learning!
+                </p>
+            </div>
+
+            <!-- Camp Details and Requirements Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">Camp Information</h2>
+                <div class="space-y-6">
+                    <!-- Camp Details -->
+                    <div class="flex items-start gap-4">
+                        <div class="text-blue-800 text-3xl">
+                            <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-200 text-blue-800 font-bold text-lg">
-                            LEGO Essential
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-800">Camp Details</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">📅 Dates:</span>
+                                    <span class="text-gray-700">June 15 - August 15</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">⏰ Schedule:</span>
+                                    <span class="text-gray-700">Mon-Fri, 9 AM - 3 PM</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">🕒 Extended Care:</span>
+                                    <span class="text-gray-700">8 AM - 5 PM</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">🎨 Activities:</span>
+                                    <span class="text-gray-700">robotics, science, and more!</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-300 text-blue-800 font-bold text-lg">
-                            FTC Robotics
+                    </div>
+                    <!-- Camp Requirements -->
+                    <div class="flex items-start gap-4">
+                        <div class="text-blue-800 text-3xl">
+                            <i class="fas fa-check-circle"></i>
                         </div>
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-400 text-blue-800 font-bold text-lg">
-                            Chess
-                        </div>
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-500 text-blue-800 font-bold text-lg">
-                            Test Prep
-                        </div>
-                        <div class="w-full h-64 flex items-center justify-center bg-blue-600 text-blue-800 font-bold text-lg">
-                            English
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-800">Camp Requirements</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">👶 Ages:</span>
+                                    <span class="text-gray-700">6-14</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">👜 Bring:</span>
+                                    <span class="text-gray-700">Lunch, water bottle, and sunscreen</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-blue-600 font-bold">📋 Required:</span>
+                                    <span class="text-gray-700">Registration and emergency contact info</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button id="prev-class" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-blue-800 text-white p-2 rounded-full">
-                    &#10094;
-                </button>
-                <button id="next-class" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-blue-800 text-white p-2 rounded-full">
-                    &#10095;
-                </button>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold text-blue-800 mb-4">Our Curriculum</h2>
+            <p class="text-gray-700 text-base mb-4">
+                Our summer camp offers a diverse curriculum designed to engage and inspire children of all ages. Activities include arts and crafts, sports, science experiments, team-building exercises, and more. Each week has a unique theme to keep the experience fresh and exciting!
+            </p>
+            <!-- Interactive Curriculum Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative group">
+                    <div class="bg-blue-100 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">LEGO Spike Prime</h3>
+                        <p class="text-sm text-gray-700 mt-2">Build and program robots using LEGO Spike Prime kits.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Explore advanced robotics concepts with hands-on activities!</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="bg-blue-200 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">LEGO Essential</h3>
+                        <p class="text-sm text-gray-700 mt-2">Learn the basics of robotics with LEGO Essential kits.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Perfect for beginners to spark creativity and problem-solving skills!</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="bg-blue-300 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">FTC Robotics</h3>
+                        <p class="text-sm text-gray-700 mt-2">Compete in exciting robotics challenges with FTC kits.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Take your robotics skills to the next level with team-based challenges!</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="bg-blue-400 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">Chess</h3>
+                        <p class="text-sm text-gray-700 mt-2">Sharpen your mind with strategic chess games.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Learn strategies and tactics to become a chess master!</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="bg-blue-500 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">Test Prep</h3>
+                        <p class="text-sm text-gray-700 mt-2">Prepare for exams with engaging and interactive lessons.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Boost your confidence and ace your tests with ease!</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="bg-blue-600 p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-bold text-blue-800">English</h3>
+                        <p class="text-sm text-gray-700 mt-2">Improve your reading, writing, and communication skills.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                        <p class="text-sm px-4">Enhance your language skills through fun and interactive activities!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -122,13 +210,13 @@
             classIndex = (classIndex === classSlides.children.length - 1) ? 0 : classIndex + 1;
             classSlides.style.transform = `translateX(-${classIndex * 100}%)`;
         });
-    </script></div>
+    </script>
 
     <!-- Trips Section -->
-    <section id="trips" class="max-w-4xl mx-auto space-y-8">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Exciting Trips</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
+    <section id="trips" class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold text-blue-800 mb-4">Exciting Trips</h2>
+            <p class="text-gray-700 text-base mb-4">
                 We organize weekly trips to local attractions such as nature parks, museums, and water parks. These trips provide a fun and educational experience for campers, ensuring they create lasting memories.
             </p>
             <!-- Gallery Slideshow -->
@@ -167,34 +255,34 @@
         });
     </script>
 
-    
-
     <!-- Schedule Section -->
-    <section id="schedule" class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <!-- Left Side: Schedule Info and Calendar -->
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Schedule</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                The camp runs from June 15th to August 15th, Monday through Friday, from 9:00 AM to 3:00 PM. Extended care is available from 8:00 AM to 5:00 PM for an additional fee.
-            </p>
-            <img src="images/calendar.jpg" alt="Camp Calendar" class="w-full h-auto rounded-lg mt-4">
-        </div>
+    <section id="schedule" class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <!-- Left Side: Schedule Info and Calendar -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">Schedule</h2>
+                <p class="text-gray-700 text-base mb-4">
+                    The camp runs from June 15th to August 15th, Monday through Friday, from 9:00 AM to 3:00 PM. Extended care is available from 8:00 AM to 5:00 PM for an additional fee.
+                </p>
+                <img src="images/calendar.jpg" alt="Camp Calendar" class="w-full h-auto rounded-lg mt-4">
+            </div>
 
-        <!-- Right Side: Google Form -->
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Register Now</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                Fill out the form below to register your child for our summer camp.
-            </p>
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true" 
-                width="100%" 
-                height="500" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0">
-                Loading…
-            </iframe>
+            <!-- Right Side: Google Form -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">Register Now</h2>
+                <p class="text-gray-700 text-base mb-4">
+                    Fill out the form below to register your child for our summer camp.
+                </p>
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true" 
+                    width="100%" 
+                    height="500" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Loading…
+                </iframe>
+            </div>
         </div>
     </section>
 
