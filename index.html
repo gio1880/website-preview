@@ -58,10 +58,10 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center text-center" data-aos="fade-up">
+    <section id="home" class="relative h-screen flex items-center justify-center text-center rounded-2xl overflow-hidden bg-blue-900">
         <!-- Video Background -->
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-            <source src="videos/landingpage v2.mp4" type="video/mp4">
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+            <source src="videos/introvid.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -69,15 +69,16 @@
         <div class="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-600/70"></div>
 
         <!-- Content -->
-        <div class="relative z-10 text-white px-4">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4" data-aos="fade-down">Welcome to AI Future</h1>
-            <p class="text-sm md:text-lg mb-6" data-aos="fade-up">
-                Empowering the next generation through robotics and innovation
-            </p>
+        <div class="relative z-10 text-white px-6 md:px-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Welcome to <span class="text-yellow-400">AI Future</span>
+            </h1>
+            <!-- <p class="text-base md:text-xl mb-8">
+                Empowering the next generation through <span class="font-semibold">robotics</span> and <span class="font-semibold">innovation</span>.
+            </p> -->
             <a
                 href="#google-form"
-                class="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-blue-700"
-                data-aos="zoom-in"
+                class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition"
             >
                 Enroll Now / 現在報名
             </a>
@@ -85,28 +86,49 @@
     </section>
     
     <!-- Summer Camp Section -->
-    <section id="summer-camp" class="text-center bg-blue-100 py-8 hover:cursor-pointer hover:bg-blue-200 transition">
-        <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-4" data-lang="en">Summer Camp 2025</h2>
-        <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-4 hidden" data-lang="zh">2025 暑期營</h2>
-        <p class="text-gray-700 text-sm md:text-lg mb-6" data-lang="en">
-            Join us for an exciting and immersive summer experience exploring robotics, design, and innovation!
-        </p>
-        <p class="text-gray-700 text-sm md:text-lg mb-6 hidden" data-lang="zh">
-            加入我們，參加一個令人興奮且身臨其境的暑期體驗，探索機器人、設計和創新！
-        </p>
-        <div class="max-w-4xl mx-auto">
-            <img
-                src="images/summer_camp.jpg"
-                alt="Summer Camp"
-                class="w-full h-48 md:h-64 object-cover rounded-lg shadow-md mb-6"
-            />
-            <p class="text-gray-600 text-sm md:text-md mb-4">
-                Our summer camp is designed for students of all ages to learn, create, and have fun with robotics. Activities include hands-on workshops, team challenges, and exciting competitions.
+    <section id="summer-camp" class="relative bg-gradient-to-br from-blue-100 to-blue-200 py-16 rounded-2xl overflow-hidden hover:cursor-pointer transition">
+        <!-- Background Shapes -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-yellow-400 rounded-full opacity-50 transform -translate-x-10 -translate-y-10"></div>
+            <div class="absolute bottom-0 right-0 w-48 h-48 bg-blue-300 rounded-full opacity-50 transform translate-x-10 translate-y-10"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6 md:px-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6" data-lang="en">Summer Camp 2025: A Summer of Discovery!</h2>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6 hidden" data-lang="zh">2025 暑期營：探索之夏！</h2>
+            <p class="text-gray-700 text-lg md:text-xl mb-6" data-lang="en">
+                Give your child the ultimate summer adventure with hands-on robotics, creative problem-solving, and unforgettable memories!
             </p>
-            <p class="text-gray-600 text-sm md:text-md mb-6">
-                <strong>Dates:</strong> July 1 - August 21, 2025<br>
-                <strong>Location:</strong> AI Future Robotics Center, Tech City
+            <p class="text-gray-700 text-lg md:text-xl mb-6 hidden" data-lang="zh">
+                為您的孩子提供終極暑期冒險，親身體驗機器人、創意解決問題，並留下難忘的回憶！
             </p>
+
+            <!-- Image -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <img
+                    src="images/summer_camp.jpg"
+                    alt="Summer Camp"
+                    class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+                />
+            </div>
+
+            <!-- Details -->
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-3xl mx-auto">
+                <p class="text-gray-600 text-md md:text-lg mb-4">
+                    Our summer camp is designed to inspire curiosity and innovation in students of all ages. Through hands-on workshops, team challenges, and exciting competitions, your child will develop critical skills while having fun!
+                </p>
+                <p class="text-gray-600 text-md md:text-lg mb-6">
+                    <strong>Dates:</strong> July 1 - August 21, 2025<br>
+                    <strong>Location:</strong> AI Future Robotics Center, Tech City
+                </p>
+                <a
+                    href="#google-form"
+                    class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition"
+                >
+                    Enroll Now / 現在報名
+                </a>
+            </div>
         </div>
     </section>
 
@@ -115,54 +137,256 @@
             window.location.href = "summercamp.html";
         });
     </script>
+    <section id="about-us" class="relative bg-gradient-to-br from-blue-100 to-blue-200 py-16 rounded-2xl overflow-hidden">
+        <!-- Background Shapes -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-yellow-400 rounded-full opacity-50 transform -translate-x-10 -translate-y-10"></div>
+            <div class="absolute bottom-0 right-0 w-48 h-48 bg-blue-300 rounded-full opacity-50 transform translate-x-10 translate-y-10"></div>
+        </div>
 
+        <!-- Content Section -->
+        <div class="relative z-10 max-w-6xl mx-auto text-center px-6">
+            <div class="flex flex-col items-center">
+                <img src="images/ai future logo.png" alt="AI Future Logo" class="h-20 mb-6">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4">About AI Future</h2>
+                <p class="text-gray-700 text-lg md:text-xl max-w-3xl">
+                    At AI Future, we inspire and empower the next generation of innovators through robotics, STEM education, and creative problem-solving. Our mission is to foster curiosity, collaboration, and a passion for technology in students of all ages.
+                </p>
+            </div>
+        </div>
+
+        <!-- Vision Quote -->
+        <div class="relative z-10 mt-12">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg relative">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-lg md:text-xl italic">
+                    "Our vision is to create a world where every child has the tools and confidence to shape the future through innovation and technology."
+                </p>
+                <p class="text-blue-800 font-bold mt-4 text-right">- AI Future Team</p>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="relative z-10 mt-16 px-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-blue-800 text-center mb-8">Our Core Values</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                    <div class="w-16 h-16 mx-auto bg-yellow-400 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-blue-700 mb-2">Innovation</h4>
+                    <p class="text-gray-600">
+                        Encouraging creativity and forward-thinking to solve real-world challenges.
+                    </p>
+                </div>
+                <!-- Value 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                    <div class="w-16 h-16 mx-auto bg-blue-400 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-blue-700 mb-2">Collaboration</h4>
+                    <p class="text-gray-600">
+                        Teamwork and shared learning are at the heart of everything we do.
+                    </p>
+                </div>
+                <!-- Value 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                    <div class="w-16 h-16 mx-auto bg-green-400 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-search text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-blue-700 mb-2">Curiosity</h4>
+                    <p class="text-gray-600">
+                        Inspiring students to ask questions and explore the unknown.
+                    </p>
+                </div>
+                <!-- Value 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                    <div class="w-16 h-16 mx-auto bg-red-400 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-blue-700 mb-2">Empowerment</h4>
+                    <p class="text-gray-600">
+                        Providing tools and knowledge to help students shape their future.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Featured Robotics Classes Section -->
     <section id="featured" class="text-center">
         <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-4">Featured Robotics Classes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="featured-container"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- FLL Explore -->
+            <a href="essential.html" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/FLL_Explore_Logo_v2.svg.png" alt="FLL Explore" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">SPIKE Essential</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 4-7</p>
+                </div>
+            </a>
+            <!-- FLL Challenge -->
+            <a href="fll.html" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/FLL_Challenge_Logo_v2.svg.png" alt="FLL Challenge" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">FIRST LEGO League (FLL)</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 9-14</p>
+                </div>
+            </a>
+            <!-- FTC -->
+            <a href="ftc.html" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/FTC-Vertical.png" alt="FTC" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">FIRST Tech Challenge (FTC)</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 12-18</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+    
+    <!-- Programs Section -->
+    <section id="programs">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4 text-center">More Programs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Chess Program -->
+            <a href="#chess" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/Chess_pieces_close_up.jpg" alt="Chess Program" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">Chess Program</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 6-18</p>
+                </div>
+            </a>
+            <!-- Debate/Public Speaking Program -->
+            <a href="#debate" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/debate club.jpg" alt="Debate Program" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">Debate/Public Speaking</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 10-18</p>
+                </div>
+            </a>
+            <!-- SHSAT Prep Program -->
+            <a href="#shsat" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/SAT ACT Club.webp" alt="SHSAT Prep Program" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">SHSAT Prep Program</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 14-18</p>
+                </div>
+            </a>
+            <!-- SAT Prep Program -->
+            <a href="#sat" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/SAT ACT Club.webp" alt="SAT Prep Program" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">SAT Prep Program</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 14-18</p>
+                </div>
+            </a>
+            <!-- Summer Camp -->
+            <a href="summercamp.html" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/summer_camp.jpg" alt="Summer Camp" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">Summer Camp</h3>
+                    <p class="text-sm text-gray-600 mt-1">All Ages</p>
+                </div>
+            </a>
+            <!-- Robotics -->
+            <a href="#featured" class="block rounded-2xl shadow-md overflow-hidden">
+                <img src="images/FTC-Vertical.png" alt="Robotics" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-blue-700">Robotics</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ages 9-18</p>
+                </div>
+            </a>
+        </div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="text-center bg-gray-100 py-8">
-        <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-4">Our Achievements</h2>
-        <p class="text-gray-600 text-sm md:text-lg mb-6">
+    <section id="achievements" class="text-center bg-gradient-to-br from-blue-100 to-blue-200 py-12 rounded-2xl">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-6">Our Achievements</h2>
+        <p class="text-gray-700 text-lg md:text-xl mb-8">
             Celebrating the success of our competitive teams in robotics and innovation!
         </p>
 
-        <!-- Slideshow Container -->
-        <div class="relative max-w-4xl mx-auto">
-            <div id="slideshow" class="flex transition-transform duration-500">
-                <div class="w-full flex-shrink-0">
-                    <img src="images/7d754aee3f25b50273498e124244d6d1 (1).jpg" alt="Achievement 1" class="w-full h-64 object-cover rounded-lg shadow-md">
-                    <p class="text-blue-800 font-semibold mt-2">Regional Robotics Champions</p>
-                    <p class="text-gray-600 text-sm">Our FIRST LEGO League (FLL) team won the regional championship in 2024.</p>
+        <!-- Colorful Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Achievement 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <div class="w-16 h-16 mx-auto bg-yellow-400 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-trophy text-white text-3xl"></i>
                 </div>
-                <div class="w-full flex-shrink-0">
-                    <img src="ai future 2/ai future 2.jpg" alt="Achievement 2" class="w-full h-64 object-cover rounded-lg shadow-md">
-                    <p class="text-blue-800 font-semibold mt-2">Innovation Award</p>
-                    <p class="text-gray-600 text-sm">Our FIRST Tech Challenge (FTC) team received the Innovation Award for their robot design.</p>
-                </div>
-                <div class="w-full flex-shrink-0">
-                    <img src="ai future 3/ai future 3.jpg" alt="Achievement 3" class="w-full h-64 object-cover rounded-lg shadow-md">
-                    <p class="text-blue-800 font-semibold mt-2">National Robotics Finalists</p>
-                    <p class="text-gray-600 text-sm">Our robotics teams made it to the national finals, competing against the best teams in the country.</p>
-                </div>
+                <img src="images/7d754aee3f25b50273498e124244d6d1 (1).jpg" alt="Achievement 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-blue-700">Regional Robotics Champions</h3>
+                <p class="text-gray-600 mt-2">
+                    Our FIRST LEGO League (FLL) team won the regional championship in 2024.
+                </p>
             </div>
 
-            <!-- Navigation Buttons -->
-            <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full shadow-md hover:bg-blue-700">
-                &#10094;
-            </button>
-            <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full shadow-md hover:bg-blue-700">
-                &#10095;
-            </button>
+            <!-- Achievement 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <div class="w-16 h-16 mx-auto bg-blue-400 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-lightbulb text-white text-3xl"></i>
+                </div>
+                <img src="ai future 2/ai future 2.jpg" alt="Achievement 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-blue-700">Innovation Award</h3>
+                <p class="text-gray-600 mt-2">
+                    Our FIRST Tech Challenge (FTC) team received the Innovation Award for their robot design.
+                </p>
+            </div>
+
+            <!-- Achievement 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <div class="w-16 h-16 mx-auto bg-red-400 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-robot text-white text-3xl"></i>
+                </div>
+                <img src="ai future 3/ai future 3.jpg" alt="Achievement 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-blue-700">National Robotics Finalists</h3>
+                <p class="text-gray-600 mt-2">
+                    Our robotics teams made it to the national finals, competing against the best teams in the country.
+                </p>
+            </div>
         </div>
     </section>
-    
-    <!-- Programs Section -->
-    <section id="programs" data-aos="fade-up">
-        <h2 class="text-2xl font-semibold text-blue-800 mb-4 text-center">Our Programs</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="programs-container" data-aos="fade-up" data-aos-delay="200"></div>
+
+    <!-- about teachers -->
+    <section id="teachers" class="text-center py-16 bg-gray-100 rounded-2xl">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-6">Meet Our Teachers</h2>
+        <p class="text-gray-700 text-lg md:text-xl mb-8">
+            Our dedicated and experienced teachers are here to guide and inspire your child every step of the way.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Teacher 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="images/teacher1.jpg" alt="Teacher 1" class="w-32 h-32 mx-auto rounded-full mb-4">
+                <h3 class="text-xl font-extrabold text-blue-700">Ms. Emily Johnson</h3>
+                <p class="text-gray-600 mt-2 font-semibold">Robotics & Engineering</p>
+                <p class="text-sm text-gray-600 mt-2">
+                    With over 10 years of experience in robotics education, Ms. Johnson is passionate about fostering innovation in young minds.
+                </p>
+            </div>
+            <!-- Teacher 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="images/teacher2.jpg" alt="Teacher 2" class="w-32 h-32 mx-auto rounded-full mb-4">
+                <h3 class="text-xl font-extrabold text-blue-700">Mr. David Lee</h3>
+                <p class="text-gray-600 mt-2 font-semibold">Programming & Coding</p>
+                <p class="text-sm text-gray-600 mt-2"></p>
+                    A software engineer turned educator, Mr. Lee specializes in teaching coding and problem-solving skills to students of all ages.
+                </p>
+            </div>
+            <!-- Teacher 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="images/teacher3.jpg" alt="Teacher 3" class="w-32 h-32 mx-auto rounded-full mb-4">
+                <h3 class="text-xl font-extrabold text-blue-700">Dr. Sophia Martinez</h3>
+                <p class="text-gray-600 mt-2 font-semibold">STEM & Innovation</p>
+                <p class="text-sm text-gray-600 mt-2"></p>
+                    Dr. Martinez brings her expertise in STEM education to create engaging and hands-on learning experiences for students.
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- Calendar Section -->
@@ -234,11 +458,53 @@
         </div>
     </section>
 
-    <!-- Google Form Embed -->
-    <section id="google-form" class="text-center py-16 bg-blue-100">
-        <h2 class="text-3xl md:text-4xl font-semibold text-blue-800 mb-4">Join Our Team</h2>
+    <!-- Google Form and Map Section -->
+    <section id="google-form" class="py-16 bg-blue-100 rounded-2xl">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+            <!-- Google Form -->
+            <div class="bg-white p-6 rounded-lg shadow-md order-2 md:order-1">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Enroll Your Child Today</h2>
+                <p class="text-gray-700 text-lg mb-6">
+                    Take the first step in your child's journey of learning and innovation. Fill out the form to get started!
+                </p>
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true"
+                    width="100%"
+                    height="400"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    class="rounded-lg shadow-md"
+                >
+                    Loading…
+                </iframe>
+            </div>
+            <!-- Google Map -->
+            <div class="bg-white p-6 rounded-lg shadow-md order-1 md:order-2">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Visit Us</h2>
+                <p class="text-gray-700 text-lg mb-6">
+                    Find us at our Robotics Center in Tech City!
+                </p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.41941548468188!3d37.77492977975959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f0b1b1b1%3A0x1b1b1b1b1b1b1b1b!2s123%20Robotics%20Way%2C%20Tech%20City%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+                    width="100%"
+                    height="400"
+                    frameborder="0"
+                    style="border:0;"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0"
+                    class="rounded-lg shadow-md"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Form for people interested in working for us -->
+    <section id="google-form" class="text-center py-16 bg-blue-100 rounded-2xl">
+        <h2 class="text-3xl md:text-4xl font-semibold text-blue-800 mb-4">Work With Us</h2>
         <p class="text-gray-700 text-lg md:text-xl mb-6">
-            Ready to take the next step? Submit your contact information, and we'll reach out to you!
+            Interested in joining our team? Fill out the form below, and we'll get in touch with you!
         </p>
         <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true"
@@ -251,55 +517,6 @@
         >
             Loading…
         </iframe>
-    </section>
-
-    <!-- Contact Us Section -->
-    <section id="contact" class="text-center bg-gray-100 py-8">
-        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Contact Us</h2>
-        <p class="text-gray-600 mb-6">
-            Have questions or need more information? Reach out to us!
-        </p>
-        <form class="max-w-lg mx-auto space-y-4">
-            <div>
-                <label for="name" class="block text-left text-gray-700 font-medium">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
-                    placeholder="Your Name"
-                    required
-                />
-            </div>
-            <div>
-                <label for="email" class="block text-left text-gray-700 font-medium">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
-                    placeholder="Your Email"
-                    required
-                />
-            </div>
-            <div>
-                <label for="message" class="block text-left text-gray-700 font-medium">Message</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2"
-                    rows="4"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-            </div>
-            <button
-                type="submit"
-                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
-            >
-                Send Message
-            </button>
-        </form>
     </section>
 
     <!-- Program Detail Modal -->
@@ -385,7 +602,7 @@
                 title: "FIRST LEGO League (FLL)",
                 description: "Competitive robotics for upper elementary and middle school students. Focus on innovation, teamwork, and problem solving.",
                 ageRange: "Ages 9-14",
-                image: "images/fll-logo-horizontal.png",
+                image: "images/FLL_Challenge_Logo_v2.svg.png",
             },
             {
                 title: "FIRST Tech Challenge (FTC)",
