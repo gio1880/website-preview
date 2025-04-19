@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIRST Tech Challenge (FTC) Program</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
+
 <body class="p-4 md:p-8 space-y-8 bg-[#fffdf4] scroll-smooth">
 
     <!-- Navigation Menu -->
@@ -29,15 +31,6 @@
             <i class="fas fa-bars"></i>
         </button>
     </nav>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden flex-col gap-4 bg-[#fffdf4] p-4 shadow-md">
-        <a href="index.html#home" class="hover:text-blue-600">Home</a>
-        <a href="index.html#programs" class="hover:text-blue-600">Programs</a>
-        <a href="index.html#calendar" class="hover:text-blue-600">Calendar</a>
-        <a href="index.html#events" class="hover:text-blue-600">Events</a>
-        <a href="index.html#enroll" class="hover:text-blue-600">Enroll</a>
-        <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
-    </div>
 
     <!-- Hero Section -->
     <section class="relative text-center py-16 bg-gradient-to-b from-blue-900 to-blue-600 text-white">
@@ -50,98 +43,183 @@
                 </p>
                 <button
                     class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200 transition"
-                    onclick="document.getElementById('google-form').scrollIntoView({ behavior: 'smooth' });"
-                >
+                    onclick="document.getElementById('google-form').scrollIntoView({ behavior: 'smooth' });">
                     Join Now
                 </button>
             </div>
         </div>
     </section>
 
-    <section class="max-w-4xl mx-auto space-y-8">
-        <!-- Requirements Section -->
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Requirements</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                To participate in the FIRST Tech Challenge (FTC) program, students must meet the following requirements:
-            </p>
-            <ul class="list-disc list-inside text-gray-700 text-sm md:text-base">
-                <li>Age: 12 to 18 years old</li>
-                <li>Interest in robotics, engineering, and programming</li>
-                <li>Commitment to attend weekly team meetings and practice sessions</li>
-                <li>Willingness to participate in regional and national competitions</li>
-                <li>Parental consent and support for team activities</li>
-            </ul>
-        </div>
+    <!-- Requirements Section -->
+    <section class="min-h-screen bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="grid grid-rows-2 gap-8 h-full">
+            <!-- Upper Half: What is FTC -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">What is FIRST Tech Challenge (FTC)?</h2>
+                <p class="text-gray-700 text-base">
+                    FIRST Tech Challenge (FTC) is a robotics program for students aged 12-18 that challenges them to design, build, and program robots to compete in exciting head-to-head challenges. FTC fosters innovation, teamwork, and critical thinking while preparing students for careers in STEM.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-4">Core Values</h3>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <div class="core-value-block bg-red-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Innovation</h4>
+                    </div>
+                    <div class="core-value-block bg-blue-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Teamwork</h4>
+                    </div>
+                    <div class="core-value-block bg-green-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Impact</h4>
+                    </div>
+                    <div class="core-value-block bg-yellow-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Inclusion</h4>
+                    </div>
+                    <div class="core-value-block bg-purple-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Fun</h4>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Skills Section -->
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Skills You'll Learn</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-6">
-                By participating in the FTC program, students will develop the following skills:
+            <!-- Bottom Half: Requirements -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-blue-800 mb-4">Requirements</h2>
+                    <p class="text-gray-700 text-base mb-4">
+                        To participate in the FTC program, students must meet the following requirements:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+                        <li>Age: 12 to 18 years old</li>
+                        <li>Interest in robotics, engineering, and programming</li>
+                        <li>Commitment to attend weekly team meetings and practice sessions</li>
+                        <li>Willingness to participate in regional and national competitions</li>
+                        <li>Parental consent and support for team activities</li>
+                    </ul>
+                </div>
+
+                <!-- Calendar Section -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-blue-800 mb-4">Program Calendar</h2>
+                    <p class="text-gray-700 text-base mb-4">
+                        Stay updated with our program schedule and important dates:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+                        <li><strong>September:</strong> Team registration and kickoff</li>
+                        <li><strong>October - December:</strong> Weekly practice sessions</li>
+                        <li><strong>January:</strong> Regional competitions</li>
+                        <li><strong>February:</strong> National competitions</li>
+                        <li><strong>March - April:</strong> Off-season workshops</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="min-h-screen bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-lg space-y-6">
+            <h2 class="text-2xl font-semibold text-blue-800">Skills You'll Learn</h2>
+            <p class="text-gray-700 text-base">
+                By participating in the FTC program, students will unlock a variety of exciting skills:
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="text-lg font-bold text-blue-700 mb-2">Engineering Design</h3>
-                    <p class="text-gray-600 text-sm md:text-base">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-blue-800 text-4xl mb-2">🤖</div>
+                    <h3 class="text-lg font-semibold text-blue-800">Robot Design</h3>
+                    <p class="text-gray-700 text-sm">
                         Learn to design, build, and optimize robots for advanced challenges.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="text-lg font-bold text-blue-700 mb-2">Programming</h3>
-                    <p class="text-gray-600 text-sm md:text-base">
+                <div class="flex flex-col items-center bg-green-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-green-800 text-4xl mb-2">💻</div>
+                    <h3 class="text-lg font-semibold text-green-800">Programming</h3>
+                    <p class="text-gray-700 text-sm">
                         Gain hands-on experience with coding in Java and other programming languages.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="text-lg font-bold text-blue-700 mb-2">Team Collaboration</h3>
-                    <p class="text-gray-600 text-sm md:text-base">
+                <div class="flex flex-col items-center bg-yellow-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-yellow-800 text-4xl mb-2">🤝</div>
+                    <h3 class="text-lg font-semibold text-yellow-800">Team Collaboration</h3>
+                    <p class="text-gray-700 text-sm">
                         Work with teammates to solve complex problems and achieve shared goals.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="text-lg font-bold text-blue-700 mb-2">Critical Thinking</h3>
-                    <p class="text-gray-600 text-sm md:text-base">
+                <div class="flex flex-col items-center bg-red-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-red-800 text-4xl mb-2">🛠️</div>
+                    <h3 class="text-lg font-semibold text-red-800">Engineering Design</h3>
+                    <p class="text-gray-700 text-sm">
+                        Explore the engineering process by building and optimizing robot designs.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-purple-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-purple-800 text-4xl mb-2">🎤</div>
+                    <h3 class="text-lg font-semibold text-purple-800">Presentation Skills</h3>
+                    <p class="text-gray-700 text-sm">
+                        Develop confidence in presenting ideas and solutions to judges and peers.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-teal-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-teal-800 text-4xl mb-2">⚙️</div>
+                    <h3 class="text-lg font-semibold text-teal-800">Critical Thinking</h3>
+                    <p class="text-gray-700 text-sm">
                         Develop innovative solutions to real-world engineering challenges.
                     </p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Curriculum Section -->
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Curriculum</h2>
-            <p class="text-gray-700 text-sm md:text-base mb-4">
-                The FTC program focuses on advanced robotics and engineering concepts. The curriculum includes:
+    <!-- Curriculum Section -->
+    <section class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Curriculum Overview</h2>
+            <p class="text-gray-700 text-lg mb-8 text-center">
+                Explore our step-by-step curriculum designed to build skills in robotics, teamwork, and innovation.
             </p>
-            <ul class="list-disc list-inside text-gray-700 text-sm md:text-base">
-                <li>Robot design and construction</li>
-                <li>Programming in Java</li>
-                <li>Engineering notebook documentation</li>
-                <li>Team collaboration and project management</li>
-                <li>Participation in regional and national competitions</li>
-            </ul>
-            <img src="images/ftc-curriculum.jpg" alt="FTC Curriculum Activities" class="w-full h-64 object-cover rounded-lg shadow-md mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Curriculum Items -->
+                <div class="relative group bg-red-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <h3 class="text-xl font-semibold text-white mb-2">Robot Design</h3>
+                    <p class="text-white text-sm">
+                        Learn to design and build robots for advanced challenges.
+                    </p>
+                </div>
+                <div class="relative group bg-blue-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <h3 class="text-xl font-semibold text-white mb-2">Programming</h3>
+                    <p class="text-white text-sm">
+                        Gain hands-on experience with Java programming.
+                    </p>
+                </div>
+                <div class="relative group bg-yellow-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <h3 class="text-xl font-semibold text-white mb-2">Team Collaboration</h3>
+                    <p class="text-white text-sm">
+                        Work together to solve complex challenges.
+                    </p>
+                </div>
+                <div class="relative group bg-green-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <h3 class="text-xl font-semibold text-white mb-2">Competitions</h3>
+                    <p class="text-white text-sm">
+                        Participate in regional and national competitions.
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Google Form Embed -->
-        <section id="google-form" class="text-center py-16 bg-blue-100">
-            <h2 class="text-3xl md:text-4xl font-semibold text-blue-800 mb-4">Join Our Team</h2>
-            <p class="text-gray-700 text-lg md:text-xl mb-6">
-                Ready to take the next step? Submit your contact information, and we'll reach out to you!
-            </p>
-            <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true"
-                width="100%"
-                height="600"
-                frameborder="0"
-                marginheight="0"
-                marginwidth="0"
-                class="rounded-lg shadow-md"
-            >
-                Loading…
-            </iframe>
-        </section>
+    <!-- Google Form Embed -->
+    <section id="google-form" class="text-center py-16 bg-blue-100">
+        <h2 class="text-3xl md:text-4xl font-semibold text-blue-800 mb-4">Join Our Team</h2>
+        <p class="text-gray-700 text-lg md:text-xl mb-6">
+            Ready to take the next step? Submit your contact information, and we'll reach out to you!
+        </p>
+        <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true"
+            width="100%"
+            height="600"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            class="rounded-lg shadow-md">
+            Loading…
+        </iframe>
     </section>
 
     <!-- Footer -->
@@ -176,4 +254,5 @@
     </footer>
 
 </body>
+
 </html>

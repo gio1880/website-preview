@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIRST LEGO League (FLL) Program</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Falling LEGO Block Animation */
+        .core-value-block {
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .lego-block::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            box-shadow:
+                20px 0 rgba(255, 255, 255, 0.4),
+                40px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .lego-block:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+            background: #00bfff;
+        }
+
+        .lego-block:nth-child(3) {
+            left: 40%;
+            animation-delay: 2s;
+            background: #32cd32;
+        }
+
+        .lego-block:nth-child(4) {
+            left: 60%;
+            animation-delay: 3s;
+            background: #ff8c00;
+        }
+
+        .lego-block:nth-child(5) {
+            left: 80%;
+            animation-delay: 4s;
+            background: #8a2be2;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -60px;
+                transform: rotate(0deg);
+            }
+
+            100% {
+                top: 100%;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Initial hidden state */
+        .fade-in-section {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        /* Visible state */
+        .fade-in-section.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-8 space-y-8 bg-[#fffdf4] scroll-smooth">
+
+    <!-- Navigation Menu -->
+    <nav class="flex justify-between items-center text-blue-800 font-semibold text-lg bg-[#fffdf4] py-4 px-6 shadow-sm">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center">
+            <img src="images/ai future logo.png" alt="AI Future Logo" class="h-10 md:h-12 mr-3">
+            <span class="text-lg md:text-xl font-bold">AI Future</span>
+        </a>
+        <!-- Links -->
+        <div class="hidden md:flex gap-6">
+            <a href="index.html#home" class="hover:text-blue-600">Home</a>
+            <a href="index.html#programs" class="hover:text-blue-600">Programs</a>
+            <a href="index.html#calendar" class="hover:text-blue-600">Calendar</a>
+            <a href="index.html#events" class="hover:text-blue-600">Events</a>
+            <a href="index.html#enroll" class="hover:text-blue-600">Enroll</a>
+            <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <button id="menu-toggle" class="md:hidden text-blue-800">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden flex-col gap-4 bg-[#fffdf4] p-4 shadow-md">
+        <a href="index.html#home" class="hover:text-blue-600">Home</a>
+        <a href="index.html#programs" class="hover:text-blue-600">Programs</a>
+        <a href="index.html#calendar" class="hover:text-blue-600">Calendar</a>
+        <a href="index.html#events" class="hover:text-blue-600">Events</a>
+        <a href="index.html#enroll" class="hover:text-blue-600">Enroll</a>
+        <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
+    </div>
+    <!-- Hero Section -->
+    <section class="relative text-center py-16 text-white overflow-hidden min-h-screen flex flex-col justify-center items-center">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="images/roboticsteampicture.JPG" alt="FLL Explore Team" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        </div>
+        <h1 class="relative text-4xl md:text-6xl font-extrabold mb-4">FIRST LEGO League Explore Program</h1>
+        <p class="relative text-lg md:text-2xl font-medium mb-6">
+            Inspiring young minds through creativity, exploration, and teamwork.
+        </p>
+        <button class="relative bg-white text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition"
+            onclick="document.getElementById('google-form').scrollIntoView({ behavior: 'smooth' });">
+            Learn More
+        </button>
+    </section>
+
+    <!-- Other Sections -->
+    <!-- Requirement Section -->
+    <section class="min-h-screen bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="grid grid-rows-2 gap-8 h-full">
+            <!-- Upper Half: What is FLL Explore -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-4">What is FIRST LEGO League Explore?</h2>
+                <p class="text-gray-700 text-base">
+                    FIRST LEGO League Explore is a hands-on STEM program designed for younger students, typically aged 6 to 10 years old. It introduces children to the exciting world of science, technology, engineering, and mathematics through playful exploration and teamwork. Students work together to design and build LEGO models and create a Show Me poster to present their ideas.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-4">Core Values</h3>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <div class="core-value-block bg-red-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Discovery</h4>
+                    </div>
+                    <div class="core-value-block bg-blue-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Innovation</h4>
+                    </div>
+                    <div class="core-value-block bg-green-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Impact</h4>
+                    </div>
+                    <div class="core-value-block bg-yellow-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Inclusion</h4>
+                    </div>
+                    <div class="core-value-block bg-purple-500 text-white p-4 rounded-full shadow-md text-center">
+                        <h4 class="font-bold">Teamwork</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Half: Split into Requirements and Calendar -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Requirements Section -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-blue-800 mb-4">Requirements</h2>
+                    <p class="text-gray-700 text-base mb-4">
+                        To participate in the FIRST LEGO League Explore program, students must meet the following requirements:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+                        <li>Age: 6 to 10 years old</li>
+                        <li>Interest in creativity, building, and teamwork</li>
+                        <li>Commitment to attend weekly team meetings and activities</li>
+                        <li>Willingness to present their projects at local showcases</li>
+                        <li>Parental consent and support for team activities</li>
+                    </ul>
+                </div>
+
+                <!-- Calendar Section -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-blue-800 mb-4">Program Calendar</h2>
+                    <p class="text-gray-700 text-base mb-4">
+                        Stay updated with our program schedule and important dates:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+                        <li><strong>January:</strong> Team registration and orientation</li>
+                        <li><strong>February - April:</strong> Weekly exploration sessions</li>
+                        <li><strong>May:</strong> Local showcase event</li>
+                        <li><strong>June:</strong> End-of-season celebration</li>
+                        <li><strong>July - August:</strong> Optional summer workshops</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="min-h-screen bg-gray-100 p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-lg space-y-6">
+            <h2 class="text-2xl font-semibold text-blue-800">Skills You'll Learn in FLL Explore</h2>
+            <p class="text-gray-700 text-base">
+                By participating in the FIRST LEGO League Explore program, young learners will develop a variety of foundational skills:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex flex-col items-center bg-blue-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-blue-800 text-4xl mb-2">🤔</div>
+                    <h3 class="text-lg font-semibold text-blue-800">Creative Thinking</h3>
+                    <p class="text-gray-700 text-sm">
+                        Explore new ideas and think creatively while designing LEGO models and posters.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-green-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-green-800 text-4xl mb-2">🤝</div>
+                    <h3 class="text-lg font-semibold text-green-800">Teamwork</h3>
+                    <p class="text-gray-700 text-sm">
+                        Collaborate with teammates to build LEGO models and share ideas effectively.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-yellow-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-yellow-800 text-4xl mb-2">💡</div>
+                    <h3 class="text-lg font-semibold text-yellow-800">Innovation</h3>
+                    <p class="text-gray-700 text-sm">
+                        Develop innovative solutions to challenges and showcase them creatively.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-red-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-red-800 text-4xl mb-2">🛠️</div>
+                    <h3 class="text-lg font-semibold text-red-800">Problem-Solving</h3>
+                    <p class="text-gray-700 text-sm">
+                        Solve real-world problems by designing and building LEGO models.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-purple-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-purple-800 text-4xl mb-2">🎤</div>
+                    <h3 class="text-lg font-semibold text-purple-800">Presentation Skills</h3>
+                    <p class="text-gray-700 text-sm">
+                        Build confidence by presenting ideas and projects to peers and mentors.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center bg-teal-100 p-4 rounded-lg shadow-md text-center">
+                    <div class="text-teal-800 text-4xl mb-2">🌟</div>
+                    <h3 class="text-lg font-semibold text-teal-800">Core Values</h3>
+                    <p class="text-gray-700 text-sm">
+                        Embrace the FLL Core Values, including discovery, inclusion, and teamwork.
+                    </p>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg shadow-md h-64">
+                <div id="auto-slideshow" class="flex transition-transform duration-500 h-full">
+                    <img src="images/7d754aee3f25b50273498e124244d6d1 (1).jpg" alt="FLL Explore Activity 1" class="w-full h-full object-cover flex-shrink-0">
+                    <img src="images/IMG_5520 (1).jpg" alt="FLL Explore Activity 2" class="w-full h-full object-cover flex-shrink-0">
+                    <img src="images/IMG_5538.jpg" alt="FLL Explore Activity 3" class="w-full h-full object-cover flex-shrink-0">
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const slideshow = document.getElementById("auto-slideshow");
+                const images = slideshow.children;
+                let index = 0;
+
+                setInterval(() => {
+                    index = (index + 1) % images.length;
+                    slideshow.style.transform = `translateX(-${index * 100}%)`;
+                }, 3000); // Change image every 3 seconds
+            });
+        </script>
+    </section>
+    <!-- Curriculum Section -->
+    <section class="bg-gray-100 p-6 rounded-lg shadow-md h-auto">
+        <!-- Upper Half: Curriculum Overview -->
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">FLL Explore Curriculum Overview</h2>
+            <p class="text-gray-700 text-lg mb-8 text-center">
+                Discover our engaging curriculum designed to inspire creativity, teamwork, and STEM exploration in young learners.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- LEGO Brick Template -->
+                <div class="relative group bg-red-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <div class="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-90 transition-opacity duration-300 rounded-lg p-6 overflow-y-auto">
+                        <h3 class="text-xl font-semibold text-white mb-2">Exploring STEM Concepts</h3>
+                        <p class="text-white text-sm mb-4">
+                            Introduce young learners to foundational STEM concepts through hands-on LEGO activities.
+                        </p>
+                        <ul class="text-white text-sm list-disc list-inside space-y-2">
+                            <li>Understanding basic engineering principles</li>
+                            <li>Exploring simple machines</li>
+                            <li>Learning through play and experimentation</li>
+                        </ul>
+                    </div>
+                    <div class="text-white text-5xl mb-4">🔬</div>
+                    <h3 class="text-lg font-semibold text-white">Exploring STEM Concepts</h3>
+                </div>
+
+                <div class="relative group bg-blue-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-90 transition-opacity duration-300 rounded-lg p-6 overflow-y-auto">
+                        <h3 class="text-xl font-semibold text-white mb-2">Teamwork & Collaboration</h3>
+                        <p class="text-white text-sm mb-4">
+                            Foster teamwork and collaboration as students work together on exciting projects.
+                        </p>
+                        <ul class="text-white text-sm list-disc list-inside space-y-2">
+                            <li>Building communication skills</li>
+                            <li>Sharing ideas and responsibilities</li>
+                            <li>Celebrating team achievements</li>
+                        </ul>
+                    </div>
+                    <div class="text-white text-5xl mb-4">🤝</div>
+                    <h3 class="text-lg font-semibold text-white">Teamwork & Collaboration</h3>
+                </div>
+
+                <div class="relative group bg-yellow-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <div class="absolute inset-0 bg-yellow-600 opacity-0 group-hover:opacity-90 transition-opacity duration-300 rounded-lg p-6 overflow-y-auto">
+                        <h3 class="text-xl font-semibold text-white mb-2">Creative Problem-Solving</h3>
+                        <p class="text-white text-sm mb-4">
+                            Encourage creativity and problem-solving as students tackle real-world challenges.
+                        </p>
+                        <ul class="text-white text-sm list-disc list-inside space-y-2">
+                            <li>Identifying challenges</li>
+                            <li>Brainstorming innovative solutions</li>
+                            <li>Presenting ideas through Show Me posters</li>
+                        </ul>
+                    </div>
+                    <div class="text-white text-5xl mb-4">💡</div>
+                    <h3 class="text-lg font-semibold text-white">Creative Problem-Solving</h3>
+                </div>
+
+                <div class="relative group bg-green-500 p-6 rounded-lg shadow-lg text-center transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+                    <div class="absolute inset-0 bg-green-600 opacity-0 group-hover:opacity-90 transition-opacity duration-300 rounded-lg p-6 overflow-y-auto">
+                        <h3 class="text-xl font-semibold text-white mb-2">LEGO Model Building</h3>
+                        <p class="text-white text-sm mb-4">
+                            Develop fine motor skills and creativity by designing and building LEGO models.
+                        </p>
+                        <ul class="text-white text-sm list-disc list-inside space-y-2">
+                            <li>Building models based on the annual theme</li>
+                            <li>Incorporating moving parts and sensors</li>
+                            <li>Showcasing models at local events</li>
+                        </ul>
+                    </div>
+                    <div class="text-white text-5xl mb-4">🧱</div>
+                    <h3 class="text-lg font-semibold text-white">LEGO Model Building</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Half: Map and Call to Action -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Map Section -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Find Us</h3>
+                <p class="text-gray-700 mb-4">
+                    Visit our center to learn more about the FLL Explore program and meet our team.
+                </p>
+                <div class="w-full h-64 rounded-lg overflow-hidden shadow-md">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153169!3d-37.81627974202144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8b8f8b8f8b8!2s123%20Robotics%20Way%2C%20Tech%20City%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        aria-hidden="false" 
+                        tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Ready to Explore?</h3>
+                <p class="text-gray-700 text-lg mb-6 text-center">
+                    Join the FIRST LEGO League Explore program today and spark your child's curiosity and creativity!
+                </p>
+                <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
+                    onclick="document.getElementById('google-form').scrollIntoView({ behavior: 'smooth' });">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="min-h-screen bg-gray-100 p-6 rounded-lg shadow-md fade-in-section">
+        <div class="bg-white p-6 rounded-lg shadow-lg space-y-6">
+            <h2 class="text-3xl font-bold text-blue-800 text-center">Team Achievements</h2>
+            <p class="text-gray-700 text-lg text-center">
+                Celebrating the milestones and accomplishments of our talented team.
+            </p>
+            <div class="space-y-8">
+                <!-- Achievement Timeline -->
+                <div class="relative border-l-4 border-blue-600">
+                    <!-- Achievement -->
+                    <div class="mb-10 ml-6">
+                        <div class="absolute -left-3 w-6 h-6 bg-blue-600 rounded-full border-2 border-white"></div>
+                        <h3 class="text-lg font-bold text-blue-700">2025 - Theme: Submerged</h3>
+                        <h4 class="text-md font-semibold text-blue-600">AI Future Explore Team</h4>
+                        <p class="text-gray-700">
+                            <strong>Achievement:</strong> Presented their project at the White Plains showcase.
+                        </p>
+                        <img src="images/ai_future_explore_team.jpg" alt="AI Future Explore Team"
+                            class="w-full h-48 object-cover rounded-lg shadow-md mt-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-gray-100 p-6 rounded-lg shadow-md fade-in-section">
+        <div class="bg-white p-6 rounded-lg shadow-lg space-y-6">
+            <h2 class="text-3xl font-bold text-blue-800 text-center">Join Our Team</h2>
+            <p class="text-gray-700 text-lg text-center">
+                Ready to take the next step? Submit your contact information, and we'll reach out to you!
+            </p>
+            <div class="w-full rounded-lg overflow-hidden shadow-md"></div>
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdtaBcHNuXRppWGApnqVv7sU4gMTMhIDH0iUS3vI23CALV_ow/viewform?embedded=true"
+                    width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" class="rounded-lg"></iframe>
+                    Loading…
+                </iframe>
+            </div>
+        </div>
+    </section>
+    <section class="max-w-4xl mx-auto space-y-8 fade-in-section">
+        <!-- Modal -->
+        <div id="cta-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Join Our Team</h3>
+                <p class="text-gray-700 mb-6">
+                    Please provide your contact information, and we'll get in touch with you shortly.
+                </p>
+                <form id="cta-form" class="space-y-6">
+                    <div>
+                        <label for="contact-info" class="block text-sm font-medium text-gray-700">Email or Phone
+                            Number</label>
+                        <input type="text" id="contact-info" name="contact-info"
+                            class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            placeholder="Enter your email or phone number" required />
+                    </div>
+                    <div class="flex justify-end gap-4">
+                        <button type="button" id="close-modal" class="text-gray-600 hover:text-gray-800">Cancel</button>
+                        <button type="submit"
+                            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h4 class="text-lg font-bold">AI Future</h4>
+                <p class="mt-2 text-sm">123 Robotics Way, Tech City, NY 10001</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold">Quick Links</h4>
+                <ul class="mt-2 space-y-2 text-sm">
+                    <li><a href="index.html#home" class="hover:underline">Home</a></li>
+                    <li><a href="index.html#programs" class="hover:underline">Programs</a></li>
+                    <li><a href="index.html#calendar" class="hover:underline">Calendar</a></li>
+                    <li><a href="index.html#events" class="hover:underline">Events</a></li>
+                    <li><a href="index.html#enroll" class="hover:underline">Enroll</a></li>
+                    <li><a href="index.html#contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold">Connect</h4>
+                <div class="flex justify-center md:justify-start gap-4 mt-4">
+                    <a href="#" aria-label="Facebook" class="hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="mt-4 text-sm">Email: info@aifuture.org</p>
+            </div>
+        </div>
+        <p class="text-center text-sm mt-6">© 2025 AI Future. All rights reserved.</p>
+    </footer>
+
+    <!-- AOS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            once: true, // Whether animation should happen only once
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".fade-in-section");
+
+            // Check if the screen width is greater than 768px
+            if (window.innerWidth > 768) {
+                const options = {
+                    root: null, // Use the viewport as the root
+                    rootMargin: "0px", // No margin around the root
+                    threshold: 0.6, // Trigger when 60% of the section is visible
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        } else {
+                            entry.target.classList.remove("visible");
+                        }
+                    });
+                }, options);
+
+                sections.forEach((section) => {
+                    observer.observe(section);
+                });
+            } else {
+                // For smaller screens, make all sections visible by default
+                sections.forEach((section) => {
+                    section.classList.add("visible");
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
