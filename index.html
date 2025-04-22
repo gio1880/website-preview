@@ -59,11 +59,15 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center text-center rounded-2xl overflow-hidden bg-blue-900">
-        <!-- Video Background -->
-        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
-            <source src="videos/introvid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Video Background with Fallback -->
+        <picture>
+            <!-- Fallback Image for Mobile -->
+            <source srcset="images/hero-fallback.jpg" media="(max-width: 768px)">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+                <source src="videos/introvid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </picture>
 
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-600/70"></div>
@@ -73,9 +77,6 @@
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                 Welcome to <span class="text-yellow-400">AI Future</span>
             </h1>
-            <!-- <p class="text-base md:text-xl mb-8">
-                Empowering the next generation through <span class="font-semibold">robotics</span> and <span class="font-semibold">innovation</span>.
-            </p> -->
             <a
                 href="#google-form"
                 class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition"
@@ -95,33 +96,23 @@
 
         <!-- Content -->
         <div class="relative z-10 text-center px-6 md:px-12">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6" data-lang="en">Summer Camp 2025: A Summer of Discovery!</h2>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6 hidden" data-lang="zh">2025 暑期營：探索之夏！</h2>
-            <p class="text-gray-700 text-lg md:text-xl mb-6" data-lang="en">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">Summer Camp 2025: A Summer of Discovery!</h2>
+            <p class="text-gray-700 text-lg md:text-xl mb-6">
                 Give your child the ultimate summer adventure with hands-on robotics, creative problem-solving, and unforgettable memories!
             </p>
-            <p class="text-gray-700 text-lg md:text-xl mb-6 hidden" data-lang="zh">
-                為您的孩子提供終極暑期冒險，親身體驗機器人、創意解決問題，並留下難忘的回憶！
-            </p>
 
-            <!-- Image -->
+            <!-- Flyer -->
             <div class="max-w-4xl mx-auto mb-8">
-                <img
-                    src="images/summer_camp.jpg"
-                    alt="Summer Camp"
-                    class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+                <img 
+                    src="images/summercampflyer.jpg" 
+                    alt="Summer Camp Flyer" 
+                    class="w-full h-auto object-contain rounded-lg shadow-lg"
                 />
             </div>
 
             <!-- Details -->
             <div class="bg-white p-6 rounded-lg shadow-lg max-w-3xl mx-auto">
-                <p class="text-gray-600 text-md md:text-lg mb-4">
-                    Our summer camp is designed to inspire curiosity and innovation in students of all ages. Through hands-on workshops, team challenges, and exciting competitions, your child will develop critical skills while having fun!
-                </p>
-                <p class="text-gray-600 text-md md:text-lg mb-6">
-                    <strong>Dates:</strong> July 1 - August 21, 2025<br>
-                    <strong>Location:</strong> AI Future Robotics Center, Tech City
-                </p>
+               
                 <a
                     href="#google-form"
                     class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition"
