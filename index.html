@@ -198,6 +198,7 @@
             <div class="mt-8">
                 <a
                     href="#google-form"
+                    onclick="event.stopPropagation();"
                     class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition"
                 >
                     Enroll Now / 現在報名
@@ -297,7 +298,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- FLL Explore -->
             <a href="fll_explore.html" class="block rounded-2xl shadow-md overflow-hidden">
-                <img src="images/FLL_Explore_Logo_v2.svg.png" alt="FLL Explore" class="w-full h-48 object-cover">
+                <img src="images/FLL_Explore_Logo_v2.svg.png" alt="FLL Explore" class="w-full h-32 object-contain mx-auto">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-blue-700">SPIKE Essential</h3>
                     <p class="text-sm text-gray-600 mt-1">Ages 4-7</p>
@@ -305,7 +306,7 @@
             </a>
             <!-- FLL Challenge -->
             <a href="fll.html" class="block rounded-2xl shadow-md overflow-hidden">
-                <img src="images/FLL_Challenge_Logo_v2.svg.png" alt="FLL Challenge" class="w-full h-48 object-cover">
+                <img src="images/FLL_Challenge_Logo_v2.svg.png" alt="FLL Challenge" class="w-full h-32 object-contain mx-auto">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-blue-700">FIRST LEGO League (FLL)</h3>
                     <p class="text-sm text-gray-600 mt-1">Ages 9-14</p>
@@ -313,7 +314,7 @@
             </a>
             <!-- FTC -->
             <a href="ftc.html" class="block rounded-2xl shadow-md overflow-hidden">
-                <img src="images/FTC-Vertical.png" alt="FTC" class="w-full h-48 object-cover">
+                <img src="images/FTC-Vertical.png" alt="FTC" class="w-full h-32 object-contain mx-auto">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-blue-700">FIRST Tech Challenge (FTC)</h3>
                     <p class="text-sm text-gray-600 mt-1">Ages 12-18</p>
@@ -322,7 +323,35 @@
         </div>
     </section>
 
-
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-blue-200 rounded-2xl shadow-xl my-12">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="flex flex-col items-center mb-8">
+                <div class="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg mb-4 animate-bounce">
+                    <i class="fas fa-play text-white text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-2 drop-shadow-lg">
+                    🎬 Robotics Program Preview
+                </h2>
+                <p class="text-gray-700 text-lg md:text-xl mt-2 mb-2 max-w-xl">
+                    Experience the energy, creativity, and innovation that make our robotics classes unforgettable!
+                </p>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-300 bg-white transition-transform hover:scale-105">
+                    <iframe 
+                        width="100%" 
+                        height="400" 
+                        src="https://www.youtube.com/embed/fYv4gjwSyro?si=2XASOpOdl4R0Rz15" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Programs Section -->
     <section id="programs">
@@ -370,7 +399,7 @@
             </a>
             <!-- Robotics -->
             <a href="#featured" class="block rounded-2xl shadow-md overflow-hidden">
-                <img src="images/FTC-Vertical.png" alt="Robotics" class="w-full h-48 object-cover">
+                <img src="images/FTC-Vertical.png" alt="Robotics" class="w-full h-32 object-contain mx-auto">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-blue-700">Robotics</h3>
                     <p class="text-sm text-gray-600 mt-1">Ages 9-18</p>
@@ -536,48 +565,25 @@
         <p class="text-gray-600 mb-6">
             Don't miss out on our exciting upcoming events!
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <!-- Event 1 -->
             <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-blue-700">FTC Orientation</h3>
-                <p class="text-sm text-gray-600 mt-2">Dates: <strong>Week of April 28 – May 2, 2025</strong></p>
+                <h3 class="text-lg font-bold text-blue-700">🧱 August 5th – FIRST LEGO League Official Game Release</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>August 5, 2025</strong></p>
                 <p class="text-gray-600 mt-2">
-                    Join us for our FTC Orientation! This is a great opportunity for new and returning students to meet the coaches, learn about the upcoming season, and get an overview of our FIRST Tech Challenge (FTC) program structure, expectations, and goals.
+                    Come by the center as we unveil the brand-new FLL 2025 game challenge!<br>
+                    This is the official kickoff of the season, and we’ll be showing the global reveal video together.<br>
+                    <span class="font-semibold">Plus: Enjoy a special surprise from our students!</span>
                 </p>
             </div>
             <!-- Event 2 -->
             <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-blue-700">FTC Open Class</h3>
-                <p class="text-sm text-gray-600 mt-2">Date: <strong>May 3, 2025</strong></p>
+                <h3 class="text-lg font-bold text-blue-700">🤖 September 23rd – FIRST Tech Challenge Official Game Release</h3>
+                <p class="text-sm text-gray-600 mt-2">Date: <strong>September 23, 2025</strong></p>
                 <p class="text-gray-600 mt-2">
-                    Curious about FTC? Come experience a live demonstration! Our Open Class welcomes students, families, and anyone interested in robotics to explore what our FTC program offers — including hands-on robot driving, programming previews, and team collaboration exercises.
-                </p>
-            </div>
-            <!-- Event 3 -->
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-blue-700">Grand Opening: New Location!</h3>
-                <p class="text-sm text-gray-600 mt-2">Date: <strong>May 2, 2025</strong></p>
-                <p class="text-gray-600 mt-2">
-                    We are excited to announce the grand opening of our brand new education center! Celebrate with us as we unveil expanded facilities, meet the team, tour the space, and enjoy a day of interactive robotics and STEM activities.
-                </p>
-            </div>
-            <!-- Event 4 -->
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-blue-700">Battle Bot Event</h3>
-                <p class="text-sm text-gray-600 mt-2">Date: <strong>June 1, 2025</strong></p>
-                <p class="text-gray-600 mt-2">
-                    It's time to battle! Students will design, build, and compete in our exciting Battle Bot Event. This hands-on competition encourages creativity, engineering skills, and teamwork. Open to all students who want to test their robotics skills in a thrilling, friendly contest!
-                </p>
-            </div>
-            <!-- Event 5 -->
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-blue-700">Summer Camp 2025</h3>
-                <p class="text-sm text-gray-600 mt-2">Dates: <strong>June 30 – August 22, 2025</strong></p>
-                <p class="text-gray-600 mt-2">
-                    Get ready for an exciting summer of learning, building, and fun! Our Summer Camp kicks off on June 30 and runs through August 22. Students will dive into hands-on robotics, coding, engineering design challenges, and STEM activities, all while building friendships and developing real-world skills.
-                </p>
-                <p class="text-gray-600 mt-2 font-bold">
-                    First Day Reminder: Summer Camp starts soon — don’t miss out on this incredible opportunity!
+                    Be part of the excitement as we launch the new FTC 2025-2026 game at the center!<br>
+                    We’ll stream the reveal live and discuss what the challenge means for our teams.<br>
+                    <span class="font-semibold">Stick around for a surprise presentation from our robotics students!</span>
                 </p>
             </div>
         </div>
@@ -750,19 +756,17 @@
                 <h4 class="text-lg font-bold">Quick Links</h4>
                 <ul class="mt-2 space-y-1 text-sm">
                     <li><a href="#home" class="hover:underline">Home</a></li>
-                    <li><a href="#programs" class="hover:underline">Programs</a></li>
-                    <li><a href="#calendar" class="hover:underline">Calendar</a></li>
-                    <li><a href="#events" class="hover:underline">Events</a></li>
-                    <li><a href="#enroll" class="hover:underline">Enroll</a></li>
-                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                    <li><a href="#featured" class="hover:underline">Robotics</a></li>
+                    <li><a href="#google-form" class="hover:underline">Enroll</a></li>
+                    <li><a href="#about-us" class="hover:underline">About</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold">Connect</h4>
                 <div class="flex justify-center md:justify-start gap-4 mt-2">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/@aifutureny" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i>Instagram</a>
+                    <a href="https://www.tiktok.com/@ai.future.robotic" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i>TikTok</a>
+                    <a href="https://www.youtube.com/@AIFutureRobotics" target="_blank" aria-label="YouTube"><i class="fab fa-youtube">Youtube</i></a>
                 </div>
                 <p class="mt-2 text-sm">Email: aifuture4231@gmail.com</p>
             </div>
