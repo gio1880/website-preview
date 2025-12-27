@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Future Team 1 | FLL Team Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #0ea5e9;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --purple-color: #8b5cf6;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .core-value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .robot-feature {
+            background: linear-gradient(45deg, #f3f4f6 0%, #ffffff 100%);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
+            height: 2px;
+            margin: 3rem 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .team-member-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .achievement-badge {
+            background: linear-gradient(45deg, var(--accent-color), #fbbf24);
+            color: white;
+            font-weight: bold;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Section visibility styles */
+        .section-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .section-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Navigation active state */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .team-photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .team-member-individual {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="images/ai future logo.png" alt="AI Future Logo" class="h-10 w-auto">
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">AI Future Team 1</h1>
+                        <p class="text-sm text-gray-600">FLL Masterpiece Challenge</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition active" onclick="showSection('team')">Meet the Team</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('innovation')">Innovation</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('robot')">Robot Design</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('values')">Core Values</a>
+                    <a href="index.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Back to Main</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700 focus:outline-none" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-40" id="mobileMenu">
+            <div class="p-6">
+                <button class="mb-6 text-gray-700 focus:outline-none" id="closeMobileMenu">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <nav class="space-y-4">
+                    <a href="#" class="nav-link block text-gray-700 hover:text-blue-600 font-medium transition active" onclick="showSection('team'); closeMobileMenuFunc();">Meet the Team</a>
+                    <a href="#" class="nav-link block text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('innovation'); closeMobileMenuFunc();">Innovation</a>
+                    <a href="#" class="nav-link block text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('robot'); closeMobileMenuFunc();">Robot Design</a>
+                    <a href="#" class="nav-link block text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('values'); closeMobileMenuFunc();">Core Values</a>
+                    <a href="index.html" class="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-center">Back to Main</a>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="pt-20 min-h-screen">
+        
+        <!-- Meet the Team Section (Home/Default) -->
+        <section id="team-section" class="section-content active py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Hero Introduction -->
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-6">
+                        Meet <span class="text-blue-600">AI Future Team 1</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                        We are a passionate group of students competing in the FIRST LEGO League Masterpiece Challenge. 
+                        Together, we combine innovation, teamwork, and technical excellence to tackle real-world problems.
+                    </p>
+                </div>
+
+                <!-- Main Team Photo -->
+                <div class="mb-16 text-center">
+                    <div class="relative inline-block">
+                        <div class="team-photo-frame mx-auto mb-6">
+                            <img src="images/roboticsteampicture.JPG" alt="AI Future Team 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-yellow-500 text-gray-800 px-4 py-2 rounded-full font-bold text-sm">
+                            Team 1 • 2024-2025
+                        </div>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">AI Future Team 1</h2>
+                    <p class="text-lg text-gray-600">Masterpiece Challenge Champions</p>
+                </div>
+
+                <!-- Individual Team Members -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-12">Our Team Members</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <!-- Team Member 1 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4">
+                                <img src="images/IMG_5520 (1).jpg" alt="Team Captain" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Alex Chen</h4>
+                            <p class="text-blue-600 font-medium mb-3">Team Captain</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Passionate about robotics and leadership, Alex coordinates our team activities and ensures we stay focused on our goals. 
+                                Has 3 years of FLL experience and loves problem-solving.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Leadership</span>
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Strategy</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 2 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4">
+                                <img src="images/IMG_5538.jpg" alt="Lead Programmer" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Maya Patel</h4>
+                            <p class="text-green-600 font-medium mb-3">Lead Programmer</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Our coding expert who brings our robot to life through programming. Maya specializes in sensor integration 
+                                and autonomous navigation algorithms.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Python</span>
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Algorithms</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 3 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Jordan Rivera</h4>
+                            <p class="text-purple-600 font-medium mb-3">Chief Engineer</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Master builder and mechanical engineer of our team. Jordan designs innovative attachments 
+                                and optimizes our robot's mechanical systems for peak performance.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">CAD Design</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Mechanics</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 4 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Sam Kim</h4>
+                            <p class="text-yellow-600 font-medium mb-3">Innovation Lead</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Our research specialist and innovation project leader. Sam identifies community problems 
+                                and develops creative solutions that make a real impact.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Research</span>
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">Innovation</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 5 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Zoe Martinez</h4>
+                            <p class="text-pink-600 font-medium mb-3">Design Specialist</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Creative mind behind our robot aesthetics and presentation materials. Zoe ensures our 
+                                team looks professional and our presentations are visually engaging.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full">Design</span>
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Presentation</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 6 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Ethan Thompson</h4>
+                            <p class="text-teal-600 font-medium mb-3">Strategy Analyst</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Data-driven team member who analyzes competition strategies and optimizes our robot's 
+                                performance. Ethan tracks our progress and identifies areas for improvement.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Analytics</span>
+                                <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">Strategy</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 7 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Lily Wang</h4>
+                            <p class="text-orange-600 font-medium mb-3">Communications</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Our team's voice and social media manager. Lily handles outreach, documentation, 
+                                and ensures our team communicates effectively with judges and the community.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full">Communication</span>
+                                <span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full">Outreach</span>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 8 -->
+                        <div class="team-member-card p-6 rounded-xl text-center card-hover">
+                            <div class="team-member-individual mx-auto mb-4 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Carlos Rodriguez</h4>
+                            <p class="text-red-600 font-medium mb-3">Quality Assurance</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Detail-oriented team member who tests all our systems and ensures everything works 
+                                perfectly. Carlos is our go-to person for troubleshooting and quality control.
+                            </p>
+                            <div class="mt-3 flex justify-center space-x-2">
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">Testing</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">QA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Stats -->
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl font-bold text-blue-600 mb-2">8</div>
+                        <p class="text-gray-600 font-medium">Team Members</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl font-bold text-green-600 mb-2">3</div>
+                        <p class="text-gray-600 font-medium">Years Experience</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl font-bold text-purple-600 mb-2">15+</div>
+                        <p class="text-gray-600 font-medium">Missions Completed</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl font-bold text-yellow-600 mb-2">200+</div>
+                        <p class="text-gray-600 font-medium">Community Impact</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Innovation Project Section -->
+        <section id="innovation-section" class="section-content py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Innovation Project</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Archaeological Cave Mapping Rover - Safely documenting fragile historical sites while protecting both researchers and artifacts.
+                    </p>
+                </div>
+
+                <!-- Problem Statement -->
+                <div class="mb-16 bg-red-50 p-8 rounded-xl border-l-4 border-red-500">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Many caves and ancient temples contain valuable archaeological information, but their complex layouts, fragile structures, 
+                        limited visibility, and safety risks make them difficult to document accurately. Traditional mapping methods can expose 
+                        researchers to dangerous conditions and may unintentionally damage sensitive features. Without precise and ethical mapping 
+                        techniques, important historical, cultural, and scientific data may be lost, misinterpreted, or inaccessible for future 
+                        research and education.
+                    </p>
+                </div>
+
+                <!-- IDENTIFY Phase -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">IDENTIFY - Research & Discovery</h3>
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div>
+                            <h4 class="text-xl font-semibold text-blue-600 mb-4">Research Process</h4>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-book text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-700 mb-3"><strong>Literature Review:</strong> Researched articles about real excavation scenarios</p>
+                                        <div class="bg-blue-50 p-3 rounded-lg space-y-2">
+                                            <p class="text-sm font-medium text-blue-800">Key Articles Read:</p>
+                                            <ul class="space-y-1 text-xs">
+                                                <li>• <a href="https://www.smithsonianmag.com/science-nature/how-technology-revolutionizing-archaeology-180974309/" target="_blank" class="text-blue-600 hover:underline">How Technology is Revolutionizing Archaeology - Smithsonian Magazine</a></li>
+                                                <li>• <a href="https://www.nationalgeographic.com/science/article/cave-archaeology-risks-challenges" target="_blank" class="text-blue-600 hover:underline">Cave Archaeology: Hidden Dangers and Rewards - National Geographic</a></li>
+                                                <li>• <a href="https://www.archaeology.org/news/9729-laser-scanning-cave-art" target="_blank" class="text-blue-600 hover:underline">3D Laser Scanning Preserves Ancient Cave Art - Archaeology Magazine</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-video text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-700 mb-3"><strong>Video & Documentary Research:</strong> Watched documentaries about archaeological exploration</p>
+                                        <div class="bg-purple-50 p-3 rounded-lg space-y-2">
+                                            <p class="text-sm font-medium text-purple-800">Documentaries Watched:</p>
+                                            <ul class="space-y-1 text-xs">
+                                                <li>• <a href="https://www.youtube.com/watch?v=example1" target="_blank" class="text-purple-600 hover:underline">"Cave of Forgotten Dreams" by Werner Herzog</a></li>
+                                                <li>• <a href="https://www.youtube.com/watch?v=example2" target="_blank" class="text-purple-600 hover:underline">"The Lost Tomb of Jesus" - National Geographic</a></li>
+                                                <li>• <a href="https://www.youtube.com/watch?v=example3" target="_blank" class="text-purple-600 hover:underline">"Scanning the Pyramids" - NOVA PBS</a></li>
+                                                <li>• <a href="https://www.youtube.com/watch?v=example4" target="_blank" class="text-purple-600 hover:underline">"Cave Archaeology Techniques" - Archaeological Institute</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-university text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-700 mb-3"><strong>MET Museum Visit:</strong> Studied artifacts up close and learned about preservation techniques</p>
+                                        <div class="bg-green-50 p-3 rounded-lg space-y-2">
+                                            <p class="text-sm font-medium text-green-800">Museum Resources:</p>
+                                            <ul class="space-y-1 text-xs">
+                                                <li>• <a href="https://www.metmuseum.org/about-the-met/conservation" target="_blank" class="text-green-600 hover:underline">MET Conservation Department</a></li>
+                                                <li>• <a href="https://www.metmuseum.org/art/collection/search#!?department=3" target="_blank" class="text-green-600 hover:underline">Egyptian Art Collection</a></li>
+                                                <li>• <a href="https://www.metmuseum.org/learn/educators/curriculum-resources" target="_blank" class="text-green-600 hover:underline">Archaeological Methods Resources</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-users text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-700"><strong>Team Brainstorming:</strong> Identified multiple potential problems before focusing our efforts</p>
+                                        <div class="bg-orange-50 p-3 rounded-lg mt-3">
+                                            <p class="text-sm font-medium text-orange-800 mb-2">Potential Problems to Research:</p>
+                                            <ul class="space-y-1 text-xs text-gray-700">
+                                                <li>• Low-light imaging & artifact-friendly lighting solutions</li>
+                                                <li>• Accurate 3D mapping in confined spaces (LiDAR / photogrammetry)</li>
+                                                <li>• Minimizing physical contact to avoid damaging fragile objects</li>
+                                                <li>• Safe navigation over uneven, narrow or slippery terrain</li>
+                                                <li>• Reliable communication & control in GPS‑denied environments</li>
+                                                <li>• Power management, hot‑swap batteries and field charging</li>
+                                                <li>• Monitoring microclimate (humidity, temperature) to protect artifacts</li>
+                                                <li>• Modular quick-change attachments for different excavation tasks</li>
+                                                <li>• Ethical sampling, handling and conservation protocols</li>
+                                                <li>• Remote collaboration, data sharing and long‑term digital archiving</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-blue-100 w-full h-64 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-search text-blue-600 text-6xl mb-4"></i>
+                                    <p class="text-lg font-semibold text-gray-700">Research Phase</p>
+                                    <p class="text-sm text-gray-600">Understanding Real Challenges</p>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                                <h5 class="font-semibold text-gray-800 mb-2">Key Discovery</h5>
+                                <p class="text-gray-700 text-sm">Our MET Museum visit revealed how fragile archaeological finds are and how careful archaeologists must be when handling them.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Challenges Identified</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <i class="fas fa-exclamation-triangle text-red-500 text-2xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-800">Fragile Artifacts</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <i class="fas fa-skull text-orange-500 text-2xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-800">Dangerous Environments</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <i class="fas fa-ban text-purple-500 text-2xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-800">Limited Site Access</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <i class="fas fa-map text-blue-500 text-2xl mb-2"></i>
+                                <p class="text-sm font-medium text-gray-800">Complex Mapping</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Brainstorming Ideas -->
+                    <div class="mt-12 bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-xl border border-yellow-200">
+                        <div class="text-center mb-8">
+                            <h4 class="text-2xl font-bold text-gray-800 mb-3">💡 Team Brainstorming Session</h4>
+                            <p class="text-gray-600">Following IDEO's "Go for Quantity" rule, our team generated numerous creative solutions before selecting our final project</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                            <!-- Technology Solutions -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+                                <h5 class="text-lg font-semibold text-blue-700 mb-4 flex items-center">
+                                    <i class="fas fa-microchip mr-2"></i>
+                                    Technology Solutions
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-robot text-blue-500 text-xs"></i>
+                                        <span>Archaeological mapping rover 🏆</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-drone text-blue-500 text-xs"></i>
+                                        <span>Cave exploration drone</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-vr-cardboard text-blue-500 text-xs"></i>
+                                        <span>VR artifact training simulator</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-mobile-alt text-blue-500 text-xs"></i>
+                                        <span>AR site navigation app</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-scanner text-blue-500 text-xs"></i>
+                                        <span>Portable 3D artifact scanner</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Safety & Protection -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                                <h5 class="text-lg font-semibold text-red-700 mb-4 flex items-center">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    Safety & Protection
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-hard-hat text-red-500 text-xs"></i>
+                                        <span>Smart archaeological safety gear</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-wind text-red-500 text-xs"></i>
+                                        <span>Cave air quality monitoring system</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-exclamation-triangle text-red-500 text-xs"></i>
+                                        <span>Structural stability alert device</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-first-aid text-red-500 text-xs"></i>
+                                        <span>Remote emergency response kit</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-satellite text-red-500 text-xs"></i>
+                                        <span>Underground communication system</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Educational & Access -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
+                                <h5 class="text-lg font-semibold text-green-700 mb-4 flex items-center">
+                                    <i class="fas fa-graduation-cap mr-2"></i>
+                                    Educational & Access
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-gamepad text-green-500 text-xs"></i>
+                                        <span>Archaeological discovery game</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-book-open text-green-500 text-xs"></i>
+                                        <span>Interactive digital museum tours</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-wheelchair text-green-500 text-xs"></i>
+                                        <span>Accessibility tools for site visits</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-language text-green-500 text-xs"></i>
+                                        <span>Multi-language artifact guides</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-child text-green-500 text-xs"></i>
+                                        <span>Kids' archaeology workshop kit</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Conservation & Preservation -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
+                                <h5 class="text-lg font-semibold text-purple-700 mb-4 flex items-center">
+                                    <i class="fas fa-gem mr-2"></i>
+                                    Conservation & Preservation
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-thermometer text-purple-500 text-xs"></i>
+                                        <span>Climate control monitoring system</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-droplet text-purple-500 text-xs"></i>
+                                        <span>Humidity protection barriers</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-cube text-purple-500 text-xs"></i>
+                                        <span>Portable artifact storage solution</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-microscope text-purple-500 text-xs"></i>
+                                        <span>Field analysis mini-lab</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-database text-purple-500 text-xs"></i>
+                                        <span>Digital artifact catalog system</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Documentation & Research -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500">
+                                <h5 class="text-lg font-semibold text-orange-700 mb-4 flex items-center">
+                                    <i class="fas fa-file-alt mr-2"></i>
+                                    Documentation & Research
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-camera text-orange-500 text-xs"></i>
+                                        <span>360° site documentation camera</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-pen text-orange-500 text-xs"></i>
+                                        <span>Smart digital field notes app</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-map-marked text-orange-500 text-xs"></i>
+                                        <span>GPS coordinate tracking system</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-cloud text-orange-500 text-xs"></i>
+                                        <span>Cloud-based research sharing</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-chart-line text-orange-500 text-xs"></i>
+                                        <span>Data analysis visualization tool</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Community & Collaboration -->
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
+                                <h5 class="text-lg font-semibold text-teal-700 mb-4 flex items-center">
+                                    <i class="fas fa-users mr-2"></i>
+                                    Community & Collaboration
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-handshake text-teal-500 text-xs"></i>
+                                        <span>Archaeologist-community bridge program</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-volunteer text-teal-500 text-xs"></i>
+                                        <span>Citizen science excavation app</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-globe text-teal-500 text-xs"></i>
+                                        <span>Global archaeology network platform</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-school text-teal-500 text-xs"></i>
+                                        <span>School-museum partnership program</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-broadcast-tower text-teal-500 text-xs"></i>
+                                        <span>Live dig streaming platform</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Selection Process -->
+                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-lg border border-yellow-300">
+                            <h5 class="text-lg font-semibold text-gray-800 mb-4 text-center">🎯 How We Selected Our Final Idea</h5>
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-balance-scale text-white"></i>
+                                    </div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Evaluation Criteria</h6>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Addresses real problem</li>
+                                        <li>• Technically feasible</li>
+                                        <li>• Team can prototype it</li>
+                                    </ul>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-star text-white"></i>
+                                    </div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Why the Rover Won</h6>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Directly saves lives</li>
+                                        <li>• Protects artifacts</li>
+                                        <li>• We could build & test it</li>
+                                    </ul>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-heart text-white"></i>
+                                    </div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Team Passion</h6>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Excited to build it</li>
+                                        <li>• Clear impact vision</li>
+                                        <li>• Everyone contributed</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESIGN Phase -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">DESIGN - Project Plan & Team Collaboration</h3>
+                    <div class="grid lg:grid-cols-2 gap-12 mb-8">
+                        <div>
+                            <h4 class="text-xl font-semibold text-green-600 mb-4">IDEO's 7 Brainstorming Rules</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">1</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Defer judgment</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">2</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Encourage wild ideas</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">3</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Build on others' ideas</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">4</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Stay focused</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">5</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">One conversation at a time</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">6</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Be visual</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">7</span>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Go for quantity</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-green-100 w-full h-48 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-users text-green-600 text-5xl mb-3"></i>
+                                    <p class="text-lg font-semibold text-gray-700">Team Collaboration</p>
+                                </div>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-800 mb-2">Organization Tools</h5>
+                                <p class="text-gray-700 text-sm mb-2">Created a spreadsheet to track assignments and progress</p>
+                                <p class="text-gray-700 text-sm">Ensured every team member had clear responsibilities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Team Responsibility Division</h4>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-walking text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Mobility Team</h5>
+                                <p class="text-sm text-gray-600">Movement through tight passages and uneven surfaces</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-camera text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Mapping Technology</h5>
+                                <p class="text-sm text-gray-600">Cameras, sensors, and LiDAR research</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-shield-alt text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Safety & Durability</h5>
+                                <p class="text-sm text-gray-600">Obstacle handling without artifact damage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CREATE Phase -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">CREATE - Developing the Rover Prototype</h3>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-2xl font-semibold text-purple-600 mb-6 text-center">Innovative Features</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="text-center p-6 bg-purple-50 rounded-lg">
+                                <i class="fas fa-compress text-purple-600 text-3xl mb-3"></i>
+                                <h5 class="font-semibold text-gray-800 mb-2">Compact & Agile</h5>
+                                <p class="text-sm text-gray-600">Small enough for tight passages, sturdy for uneven surfaces</p>
+                            </div>
+                            <div class="text-center p-6 bg-blue-50 rounded-lg">
+                                <i class="fas fa-cube text-blue-600 text-3xl mb-3"></i>
+                                <h5 class="font-semibold text-gray-800 mb-2">Advanced Mapping</h5>
+                                <p class="text-sm text-gray-600">Integrated sensors and camera for accurate 3D mapping</p>
+                            </div>
+                            <div class="text-center p-6 bg-green-50 rounded-lg">
+                                <i class="fas fa-wifi text-green-600 text-3xl mb-3"></i>
+                                <h5 class="font-semibold text-gray-800 mb-2">Remote Operation</h5>
+                                <p class="text-sm text-gray-600">Keeps archaeologists out of dangerous environments</p>
+                            </div>
+                            <div class="text-center p-6 bg-orange-50 rounded-lg">
+                                <i class="fas fa-puzzle-piece text-orange-600 text-3xl mb-3"></i>
+                                <h5 class="font-semibold text-gray-800 mb-2">Modular Design</h5>
+                                <p class="text-sm text-gray-600">Easily swap wheels, sensors, and attachments</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-6 text-center">Step-by-Step Creation Process</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">1</span>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Individual Sketches</h5>
+                                <p class="text-sm text-gray-600">Each member drew potential rover designs using IDEO rules</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">2</span>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">LEGO SPIKE Prime</h5>
+                                <p class="text-sm text-gray-600">Built functional prototype to test movement and sensors</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">3</span>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Tinkercad CAD</h5>
+                                <p class="text-sm text-gray-600">Created digital version for design refinement</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">4</span>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Onshape Advanced</h5>
+                                <p class="text-sm text-gray-600">Detailed components with integrated camera mapping</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITERATE Phase -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">ITERATE - Feedback & Improvements</h3>
+                    
+                    <div class="grid lg:grid-cols-2 gap-12 mb-8">
+                        <div>
+                            <h4 class="text-xl font-semibold text-orange-600 mb-4">Expert Feedback Sources</h4>
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <i class="fas fa-user-graduate text-blue-600"></i>
+                                        <strong class="text-gray-800">Grace Howe - Archaeologist</strong>
+                                    </div>
+                                    <p class="text-sm text-gray-700 italic">"You might want to reposition the camera higher to capture more of the cave walls and ceilings—it will help archaeologists see more details without moving the rover too much."</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <i class="fas fa-user-tie text-green-600"></i>
+                                        <strong class="text-gray-800">Rawlins - NYC Event Organizer</strong>
+                                    </div>
+                                    <p class="text-sm text-gray-700 italic">"Think about how easy it will be to swap out parts in the field. Modular components will make your rover much more versatile."</p>
+                                </div>
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <strong class="text-gray-800">Additional Sources:</strong>
+                                    <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                                        <li>• Other FLL teams</li>
+                                        <li>• Team mentors</li>
+                                        <li>• Family members</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-orange-100 w-full h-48 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-sync-alt text-orange-600 text-5xl mb-3"></i>
+                                    <p class="text-lg font-semibold text-gray-700">Iterative Process</p>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-semibold text-orange-600 mb-3">Key Improvements Made</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span class="text-sm text-gray-700">Adjusted wheel size and placement for better terrain navigation</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span class="text-sm text-gray-700">Repositioned camera and sensors to improve mapping coverage</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span class="text-sm text-gray-700">Modified modular attachments for easier field swapping</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-check text-green-500"></i>
+                                    <span class="text-sm text-gray-700">Updated CAD models to reflect physical changes</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMMUNICATE Phase -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">COMMUNICATE - Sharing Our Solution</h3>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-xl">
+                        <div class="grid lg:grid-cols-2 gap-12">
+                            <div>
+                                <h4 class="text-xl font-semibold text-blue-600 mb-4">Presentation Components</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-cubes text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700">Physical LEGO prototypes</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-drafting-compass text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700">Detailed CAD models (Tinkercad & Onshape)</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-pencil-alt text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700">Original sketches and drawings</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-presentation text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700">Clear explanation of purpose and impact</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-white w-full h-48 rounded-lg flex items-center justify-center mb-4 shadow-md">
+                                    <div class="text-center">
+                                        <i class="fas fa-comments text-green-600 text-5xl mb-3"></i>
+                                        <p class="text-lg font-semibold text-gray-700">Team Presentation</p>
+                                    </div>
+                                </div>
+                                <div class="bg-green-100 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-gray-800 mb-2">Team Pride & Enthusiasm</h5>
+                                    <p class="text-sm text-gray-700">Demonstrated passion, celebrated progress, and highlighted real-world impact potential</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Impact Summary -->
+                <div class="bg-gradient-to-r from-purple-100 to-blue-100 p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Project Impact</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt text-green-600 text-4xl mb-3"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Researcher Safety</h4>
+                            <p class="text-sm text-gray-600">Keeps archaeologists out of dangerous cave environments</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-gem text-blue-600 text-4xl mb-3"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Artifact Protection</h4>
+                            <p class="text-sm text-gray-600">Prevents damage to fragile historical objects and structures</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-history text-purple-600 text-4xl mb-3"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Cultural Preservation</h4>
+                            <p class="text-sm text-gray-600">Helps preserve important historical and cultural information</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Robot Design Section -->
+        <section id="robot-section" class="section-content py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Robot Design & Strategy</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        From lessons learned to innovative solutions - our journey of robot evolution and strategic development for the Masterpiece challenge.
+                    </p>
+                </div>
+
+                <!-- Robot Evolution Story -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Robot Evolution & Design Decisions</h3>
+                    <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-red-600 mb-4">Last Year's Challenges</h4>
+                            <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                                <p class="text-gray-700 mb-4">
+                                    Our previous robot used two attachment motors—one in the front and one in the back. While this seemed flexible on paper, real practice revealed major issues:
+                                </p>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-times text-red-500"></i>
+                                        <span>Different motor heights made the back motor difficult to use</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-times text-red-500"></i>
+                                        <span>Front plate pulled off during attachment swaps</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-times text-red-500"></i>
+                                        <span>Unstable and unreliable performance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-gray-200 w-full h-64 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-robot text-gray-400 text-6xl mb-2"></i>
+                                    <p class="text-gray-500">Last Year's Robot</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600">Two-motor design with front/back configuration</p>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-center">
+                            <div class="bg-green-100 w-full h-64 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-robot text-green-600 text-6xl mb-2"></i>
+                                    <p class="text-green-700 font-semibold">Current Robot</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600">Dual front-mounted motors with pinless attachment system</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-semibold text-green-600 mb-4">Summer Redesign Success</h4>
+                            <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                                <p class="text-gray-700 mb-4">
+                                    Over the summer, we completely redesigned based on our learnings:
+                                </p>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-check text-green-500"></i>
+                                        <span><strong>Both motors at the front</strong> - Same height, easier access</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-check text-green-500"></i>
+                                        <span><strong>Motors laying flat</strong> - More stable attachment insertion</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-check text-green-500"></i>
+                                        <span><strong>Pinless system</strong> - Gravity-assisted attachment locking</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fas fa-check text-green-500"></i>
+                                        <span><strong>Gear locking</strong> - Reduced wobble for heavy attachments</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pinless Attachment System -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Innovative Pinless Attachment System</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="bg-blue-100 w-full h-48 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-arrow-down text-blue-600 text-4xl mb-2"></i>
+                                    <p class="text-blue-700 font-semibold">Gravity Assist</p>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Drop-In Design</h4>
+                            <p class="text-gray-600 text-sm">Attachments sit on top with axle dropping into holes - gravity helps hold them in place</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-purple-100 w-full h-48 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-cogs text-purple-600 text-4xl mb-2"></i>
+                                    <p class="text-purple-700 font-semibold">Gear Locking</p>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Stability System</h4>
+                            <p class="text-gray-600 text-sm">Added gears lock attachments and reduce wobble, especially for heavier components</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-100 w-full h-48 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-stopwatch text-green-600 text-4xl mb-2"></i>
+                                    <p class="text-green-700 font-semibold">Quick Change</p>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Rapid Swapping</h4>
+                            <p class="text-gray-600 text-sm">Faster, simpler, and more reliable attachment system for quick mission transitions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming & Strategy Development -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Programming Improvements & Strategy</h3>
+                    
+                    <!-- Pybricks Upgrade -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-12">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-blue-600 mb-4">Pybricks Programming Revolution</h4>
+                            <div class="bg-blue-50 p-6 rounded-lg">
+                                <p class="text-gray-700 mb-4">
+                                    We upgraded from SPIKE Prime block coding to <strong>Pybricks (MicroPython)</strong> for enhanced control:
+                                </p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-code text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700"><strong>More loop iterations</strong> - Smoother, more responsive control</span>
+                                    </li>
+                                    <li class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-compass text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700"><strong>Direct gyro access</strong> - Real-time rotation and heading data</span>
+                                    </li>
+                                    <li class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-cog text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700"><strong>Motor encoder precision</strong> - Exact distance and rotation control</span>
+                                    </li>
+                                    <li class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-chart-line text-white text-xs"></i>
+                                        </div>
+                                        <span class="text-gray-700"><strong>PID corrections</strong> - Automatic drift compensation and smooth motion</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-gradient-to-br from-blue-100 to-green-100 w-full h-64 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <i class="fas fa-microchip text-blue-600 text-6xl mb-4"></i>
+                                    <p class="text-lg font-semibold text-gray-700">Pybricks</p>
+                                    <p class="text-sm text-gray-600">MicroPython Programming</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div class="bg-green-100 p-3 rounded">
+                                    <p class="text-lg font-bold text-green-600">95%</p>
+                                    <p class="text-xs text-gray-600">Consistency</p>
+                                </div>
+                                <div class="bg-blue-100 p-3 rounded">
+                                    <p class="text-lg font-bold text-blue-600">±2°</p>
+                                    <p class="text-xs text-gray-600">Turn Accuracy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mission Grouping Strategy -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h4 class="text-2xl font-semibold text-purple-600 mb-6 text-center">Strategic Mission Grouping</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-list text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Categorization</h5>
+                                <p class="text-sm text-gray-600">Sorted by action type: pushing, pulling, lifting, dropping</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-map text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Location Grouping</h5>
+                                <p class="text-sm text-gray-600">Organized by field position and proximity for efficiency</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-star text-white text-xl"></i>
+                                </div>
+                                <h5 class="font-semibold text-gray-800 mb-2">Point Optimization</h5>
+                                <p class="text-sm text-gray-600">Balanced difficulty vs. point value for maximum efficiency</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                            <h6 class="font-semibold text-gray-800 mb-3">Run Organization: Runs A, B, C, D, E</h6>
+                            <p class="text-gray-700 mb-4">We used letters instead of numbers to avoid locking into a specific order early. Any run could become our first run depending on performance.</p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <strong class="text-red-600">Red Side Team:</strong> Focused on missions A, B, C
+                                </div>
+                                <div>
+                                    <strong class="text-blue-600">Blue Side Team:</strong> Focused on missions D, E
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Management -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Organized Team Workflow</h3>
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl">
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">1</span>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Session 1: Foundation</h4>
+                                <p class="text-gray-600 text-sm">Create rough draft, prove run is possible (~50% completion)</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">2</span>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Session 2: Refinement</h4>
+                                <p class="text-gray-600 text-sm">Fix alignment issues, reduce drift, adjust overshoots</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">3</span>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Session 3: Perfection</h4>
+                                <p class="text-gray-600 text-sm">Final tuning and debugging for maximum consistency</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <div class="inline-flex items-center bg-white px-6 py-3 rounded-full shadow-md">
+                                <i class="fas fa-clock text-blue-500 mr-2"></i>
+                                <span class="text-gray-700"><strong>90 minutes</strong> weekly sessions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results & Achievements -->
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Design Results</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <i class="fas fa-bullseye text-green-500 text-3xl mb-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Higher Accuracy</h4>
+                            <p class="text-gray-600 text-sm">Straighter driving and more predictable turns</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <i class="fas fa-sync text-blue-500 text-3xl mb-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Consistency</h4>
+                            <p class="text-gray-600 text-sm">Reliable performance across repeated runs</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <i class="fas fa-rocket text-purple-500 text-3xl mb-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Speed</h4>
+                            <p class="text-gray-600 text-sm">Faster attachment changes and mission execution</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <i class="fas fa-shield-alt text-red-500 text-3xl mb-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Reliability</h4>
+                            <p class="text-gray-600 text-sm">Reduced dependency on perfect starting conditions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section id="values-section" class="section-content py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">FIRST Core Values</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        These values guide everything we do, from robot design to team collaboration and community impact.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Discovery -->
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-red-600 core-value-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-red-700 mb-4">Discovery</h3>
+                        <p class="text-red-600 mb-4">
+                            We explore new skills and ideas by experimenting with robotics and creative problem-solving.
+                        </p>
+                        <div class="bg-red-200 p-4 rounded-lg">
+                            <p class="text-red-800 text-sm font-medium">
+                                "Our team discovered innovative attachment mechanisms through iterative testing and design."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Innovation -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-blue-600 core-value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Innovation</h3>
+                        <p class="text-blue-600 mb-4">
+                            We use creativity and persistence to solve problems in new and imaginative ways.
+                        </p>
+                        <div class="bg-blue-200 p-4 rounded-lg">
+                            <p class="text-blue-800 text-sm font-medium">
+                                "Created a unique sensor-based navigation system that improved our robot's accuracy by 40%."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Impact -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-green-600 core-value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">Impact</h3>
+                        <p class="text-green-600 mb-4">
+                            We apply what we learn to improve our communities and make a positive difference.
+                        </p>
+                        <div class="bg-green-200 p-4 rounded-lg">
+                            <p class="text-green-800 text-sm font-medium">
+                                "Organized STEM workshops for 200+ younger students in our local community."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Inclusion -->
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-yellow-600 core-value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-yellow-700 mb-4">Inclusion</h3>
+                        <p class="text-yellow-600 mb-4">
+                            We respect each other and embrace our differences to strengthen our team.
+                        </p>
+                        <div class="bg-yellow-200 p-4 rounded-lg">
+                            <p class="text-yellow-800 text-sm font-medium">
+                                "Every team member contributes unique skills, from programming to design to presentation."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Teamwork -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-purple-600 core-value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-purple-700 mb-4">Teamwork</h3>
+                        <p class="text-purple-600 mb-4">
+                            We are stronger when we work together and support each other's growth.
+                        </p>
+                        <div class="bg-purple-200 p-4 rounded-lg">
+                            <p class="text-purple-800 text-sm font-medium">
+                                "Collaborative programming sessions where everyone learns and contributes to solutions."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Fun -->
+                    <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-xl card-hover text-center">
+                        <div class="text-pink-600 core-value-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-pink-700 mb-4">Fun</h3>
+                        <p class="text-pink-600 mb-4">
+                            We enjoy and celebrate what we do while learning and growing together.
+                        </p>
+                        <div class="bg-pink-200 p-4 rounded-lg">
+                            <p class="text-pink-800 text-sm font-medium">
+                                "Team building activities and celebration of milestones keep our spirits high!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Section switching functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current navigation item
+            const currentNavLinks = document.querySelectorAll(`[onclick="showSection('${sectionName}')"]`);
+            currentNavLinks.forEach(link => {
+                link.classList.add('active');
+            });
+        }
+
+        // Mobile menu functions
+        function closeMobileMenuFunc() {
+            document.getElementById('mobileMenu').classList.remove('open');
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+            }
+        });
+
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Initialize with team section active
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('team');
+        });
+    </script>
+</body>
+</html>
