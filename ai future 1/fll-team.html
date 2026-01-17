@@ -143,6 +143,54 @@
             overflow: hidden;
             border: 3px solid var(--secondary-color);
         }
+
+        /* Robot Path Animation Styles */
+        .field-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .field-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .field-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Robot Path Styling */
+        .robot-path {
+            fill: none;
+            stroke: #e63946;
+            stroke-width: 6;
+            stroke-linecap: round;
+        }
+
+        /* Animation Label */
+        .animation-label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -1146,6 +1194,453 @@
                     <p class="text-gray-600 text-sm">Quick-swap design enables faster mission transitions and less downtime.</p>
                     </div>
                 </div>
+                </div>
+                
+                <!-- Robot Path Animation with Run Comparison -->
+                <div class="mb-16">
+                    <h4 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Robot Path Visualization & Run Analysis</h4>
+                    
+                    <!-- Run Selector Menu -->
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl mb-6">
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4 text-center">Mission Run Library</h5>
+                        
+                        <!-- Run Tabs -->
+                        <div class="flex flex-wrap justify-center gap-2 mb-6">
+                            <button onclick="selectRun('runA')" id="tab-runA" class="run-tab active-run bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-blue-700">
+                                <i class="fas fa-play mr-2"></i>Run A
+                            </button>
+                            <button onclick="selectRun('runB')" id="tab-runB" class="run-tab bg-white text-gray-700 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50 border">
+                                <i class="fas fa-route mr-2"></i>Run B
+                            </button>
+                            <button onclick="selectRun('runC')" id="tab-runC" class="run-tab bg-white text-gray-700 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50 border">
+                                <i class="fas fa-crosshairs mr-2"></i>Run C
+                            </button>
+                            <button onclick="selectRun('runD')" id="tab-runD" class="run-tab bg-white text-gray-700 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50 border">
+                                <i class="fas fa-rocket mr-2"></i>Run D
+                            </button>
+                            <button onclick="selectRun('runE')" id="tab-runE" class="run-tab bg-white text-gray-700 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50 border">
+                                <i class="fas fa-star mr-2"></i>Run E
+                            </button>
+                            <button onclick="selectRun('overview')" id="tab-overview" class="run-tab bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:from-purple-600 hover:to-pink-600">
+                                <i class="fas fa-chart-bar mr-2"></i>Overview
+                            </button>
+                        </div>
+
+                        <!-- Run Statistics Dashboard -->
+                        <div id="run-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                            <!-- Stats populated by JavaScript -->
+                        </div>
+
+                        <!-- Quick Run Navigator -->
+                        <div class="flex justify-center space-x-2 text-sm">
+                            <button onclick="previousRun()" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded transition-colors">
+                                <i class="fas fa-chevron-left mr-1"></i>Previous
+                            </button>
+                            <span id="run-counter" class="px-3 py-1 text-gray-600">Run A (1 of 5)</span>
+                            <button onclick="nextRun()" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded transition-colors">
+                                Next<i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Single Run Display -->
+                    <div id="single-run-container" class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h5 id="run-title" class="text-xl font-semibold text-blue-600">Run A - Primary Strategy</h5>
+                            <div class="flex items-center space-x-2">
+                                <div id="run-badge" class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                    Iteration 1
+                                </div>
+                                <div id="performance-badge" class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    ✓ Optimized
+                                </div>
+                            </div>
+                        </div>
+                        <p id="run-description" class="text-center text-gray-600 mb-6">Primary mission strategy focusing on high-value targets and efficient path optimization.</p>
+                        
+                        <div class="field-container">
+                            <div id="animation-label" class="animation-label">FLL Unearthed – Run A Path</div>
+                            
+                            <!-- Field Image -->
+                            <img src="this years map.png" alt="FLL Unearthed Field" onerror="this.src='https://via.placeholder.com/900x600/f3f4f6/1e40af?text=FLL+Field+Map'">
+                            
+                            <!-- SVG overlay -->
+                            <svg class="field-overlay" viewBox="0 0 900 600" preserveAspectRatio="none">
+                                <!-- Robot Path -->
+                                <path
+                                    id="robot-path"
+                                    class="robot-path"
+                                    d="
+                                      M 70 520
+                                      L 70 220
+                                      L 50 220
+                                      L 70 80
+                                      L 160 160
+                                      L 70 520
+                                    "
+                                />
+                                
+                                <!-- Moving Robot -->
+                                <circle r="10" id="robot-circle" fill="var(--primary-color)">
+                                    <animateMotion
+                                        id="robot-animation"
+                                        dur="6s"
+                                        fill="freeze"
+                                        repeatCount="indefinite"
+                                        path="
+                                          M 70 520
+                                          L 70 220
+                                          L 50 220
+                                          L 70 80
+                                          L 160 160
+                                          L 70 520
+                                        "
+                                    />
+                                </circle>
+                            </svg>
+                        </div>
+                        
+                        <div id="run-notes" class="mt-6 text-center">
+                            <p class="text-sm text-gray-600">
+                                This animation demonstrates our primary mission strategy with optimized path planning and strategic mission prioritization.
+                            </p>
+                        </div>
+
+                        <!-- Mission Details -->
+                        <div id="mission-details" class="mt-6 grid md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <h6 class="font-semibold text-blue-700 mb-2">Primary Missions</h6>
+                                <p class="text-sm text-gray-600" id="primary-missions">M1, M3, M5, M7</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg text-center">
+                                <h6 class="font-semibold text-green-700 mb-2">Secondary Missions</h6>
+                                <p class="text-sm text-gray-600" id="secondary-missions">M2, M4, M6</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                                <h6 class="font-semibold text-purple-700 mb-2">Backup Missions</h6>
+                                <p class="text-sm text-gray-600" id="backup-missions">M8, M9</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overview Display -->
+                    <div id="overview-container" class="hidden bg-white p-6 rounded-xl shadow-lg">
+                        <h5 class="text-xl font-semibold text-purple-600 mb-6 text-center">All Runs Performance Overview</h5>
+                        
+                        <!-- Performance Comparison Chart -->
+                        <div class="mb-6">
+                            <h6 class="text-lg font-semibold text-gray-800 mb-4">Performance Comparison</h6>
+                            <div class="grid grid-cols-5 gap-4">
+                                <!-- Run comparison cards -->
+                                <div class="bg-blue-50 p-4 rounded-lg text-center border-l-4 border-blue-500">
+                                    <div class="text-2xl font-bold text-blue-600">A</div>
+                                    <div class="text-sm text-gray-600 mb-2">Primary</div>
+                                    <div class="text-lg font-semibold text-blue-700">420</div>
+                                    <div class="text-xs text-gray-500">points</div>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg text-center border-l-4 border-green-500">
+                                    <div class="text-2xl font-bold text-green-600">B</div>
+                                    <div class="text-sm text-gray-600 mb-2">Alternative</div>
+                                    <div class="text-lg font-semibold text-green-700">385</div>
+                                    <div class="text-xs text-gray-500">points</div>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg text-center border-l-4 border-yellow-500">
+                                    <div class="text-2xl font-bold text-yellow-600">C</div>
+                                    <div class="text-sm text-gray-600 mb-2">Speed Focus</div>
+                                    <div class="text-lg font-semibold text-yellow-700">360</div>
+                                    <div class="text-xs text-gray-500">points</div>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg text-center border-l-4 border-purple-500">
+                                    <div class="text-2xl font-bold text-purple-600">D</div>
+                                    <div class="text-sm text-gray-600 mb-2">Conservative</div>
+                                    <div class="text-lg font-semibold text-purple-700">340</div>
+                                    <div class="text-xs text-gray-500">points</div>
+                                </div>
+                                <div class="bg-pink-50 p-4 rounded-lg text-center border-l-4 border-pink-500">
+                                    <div class="text-2xl font-bold text-pink-600">E</div>
+                                    <div class="text-sm text-gray-600 mb-2">Experimental</div>
+                                    <div class="text-lg font-semibold text-pink-700">395</div>
+                                    <div class="text-xs text-gray-500">points</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices Summary -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-4">Top Performing Runs</h6>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">🥇 Run A - Primary</span>
+                                        <span class="text-sm font-bold text-green-600">420 pts</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">🥈 Run E - Experimental</span>
+                                        <span class="text-sm font-bold text-blue-600">395 pts</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-gray-700">🥉 Run B - Alternative</span>
+                                        <span class="text-sm font-bold text-purple-600">385 pts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-4">Run Strategies</h6>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <div><strong>Run A:</strong> High-value mission focus</div>
+                                    <div><strong>Run B:</strong> Balanced approach</div>
+                                    <div><strong>Run C:</strong> Speed optimization</div>
+                                    <div><strong>Run D:</strong> Reliability focus</div>
+                                    <div><strong>Run E:</strong> Innovation testing</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Access to All Runs -->
+                        <div class="mt-6 text-center">
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <button onclick="selectRun('runA')" class="px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded transition-colors">View Run A</button>
+                                <button onclick="selectRun('runB')" class="px-4 py-2 bg-green-100 hover:bg-green-200 text-green-700 rounded transition-colors">View Run B</button>
+                                <button onclick="selectRun('runC')" class="px-4 py-2 bg-yellow-100 hover:bg-yellow-200 text-yellow-700 rounded transition-colors">View Run C</button>
+                                <button onclick="selectRun('runD')" class="px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded transition-colors">View Run D</button>
+                                <button onclick="selectRun('runE')" class="px-4 py-2 bg-pink-100 hover:bg-pink-200 text-pink-700 rounded transition-colors">View Run E</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Run data with placeholder values for runs A-E
+                        const runData = {
+                            runA: {
+                                title: 'Run A - Primary Strategy',
+                                badge: 'Iteration 1',
+                                performance: '✓ Optimized',
+                                performanceClass: 'bg-green-100 text-green-800',
+                                description: 'Primary mission strategy focusing on high-value targets and efficient path optimization.',
+                                label: 'FLL Unearthed – Run A Path',
+                                path: 'M 70 520 L 70 220 L 50 220 L 70 80 L 160 160 L 70 520',
+                                duration: '6s',
+                                color: '#1e40af',
+                                notes: 'This animation demonstrates our primary mission strategy with optimized path planning and strategic mission prioritization.',
+                                stats: {
+                                    points: '420 pts',
+                                    missions: '11/15',
+                                    time: '0:45',
+                                    efficiency: '94%'
+                                },
+                                missions: {
+                                    primary: 'M1, M3, M5, M7',
+                                    secondary: 'M2, M4, M6',
+                                    backup: 'M8, M9'
+                                }
+                            },
+                            runB: {
+                                title: 'Run B - Alternative Strategy',
+                                badge: 'Iteration 1',
+                                performance: '⚡ Balanced',
+                                performanceClass: 'bg-blue-100 text-blue-800',
+                                description: 'Alternative approach balancing point scoring with reliability and consistency.',
+                                label: 'FLL Unearthed – Run B Path',
+                                path: 'M 70 520 L 200 450 L 300 350 L 250 150 L 100 200 L 70 520',
+                                duration: '7s',
+                                color: '#059669',
+                                notes: 'Balanced strategy prioritizing consistent performance with moderate risk and steady point accumulation.',
+                                stats: {
+                                    points: '385 pts',
+                                    missions: '10/15',
+                                    time: '0:30',
+                                    efficiency: '87%'
+                                },
+                                missions: {
+                                    primary: 'M2, M4, M8, M10',
+                                    secondary: 'M1, M5, M12',
+                                    backup: 'M6, M7'
+                                }
+                            },
+                            runC: {
+                                title: 'Run C - Speed Focus',
+                                badge: 'Iteration 1',
+                                performance: '🚀 Fast',
+                                performanceClass: 'bg-yellow-100 text-yellow-800',
+                                description: 'Speed-optimized strategy prioritizing quick execution and time efficiency.',
+                                label: 'FLL Unearthed – Run C Path',
+                                path: 'M 70 520 L 150 400 L 400 300 L 350 100 L 70 520',
+                                duration: '4s',
+                                color: '#dc2626',
+                                notes: 'High-speed execution strategy focused on completing missions quickly with minimal path complexity.',
+                                stats: {
+                                    points: '360 pts',
+                                    missions: '9/15',
+                                    time: '1:15',
+                                    efficiency: '82%'
+                                },
+                                missions: {
+                                    primary: 'M1, M2, M3',
+                                    secondary: 'M4, M5',
+                                    backup: 'M6, M11, M12'
+                                }
+                            },
+                            runD: {
+                                title: 'Run D - Conservative Approach',
+                                badge: 'Iteration 1',
+                                performance: '🛡️ Reliable',
+                                performanceClass: 'bg-purple-100 text-purple-800',
+                                description: 'Conservative strategy emphasizing reliability and guaranteed point scoring.',
+                                label: 'FLL Unearthed – Run D Path',
+                                path: 'M 70 520 L 120 400 L 200 300 L 180 200 L 90 350 L 70 520',
+                                duration: '8s',
+                                color: '#7c3aed',
+                                notes: 'Conservative approach focusing on high-probability missions with minimal risk of failure.',
+                                stats: {
+                                    points: '340 pts',
+                                    missions: '8/15',
+                                    time: '0:20',
+                                    efficiency: '95%'
+                                },
+                                missions: {
+                                    primary: 'M1, M2, M6',
+                                    secondary: 'M3, M7',
+                                    backup: 'M4, M8, M9, M10'
+                                }
+                            },
+                            runE: {
+                                title: 'Run E - Experimental',
+                                badge: 'Iteration 1',
+                                performance: '🧪 Innovative',
+                                performanceClass: 'bg-pink-100 text-pink-800',
+                                description: 'Experimental strategy testing innovative techniques and creative solutions.',
+                                label: 'FLL Unearthed – Run E Path',
+                                path: 'M 70 520 L 300 480 L 450 300 L 250 100 L 100 250 L 70 520',
+                                duration: '9s',
+                                color: '#ec4899',
+                                notes: 'Experimental run exploring new attachment combinations and innovative mission approaches.',
+                                stats: {
+                                    points: '395 pts',
+                                    missions: '12/15',
+                                    time: '0:35',
+                                    efficiency: '89%'
+                                },
+                                missions: {
+                                    primary: 'M3, M7, M11, M14',
+                                    secondary: 'M1, M5, M9, M15',
+                                    backup: 'M2, M4, M6, M8'
+                                }
+                            }
+                        };
+
+                        let currentRunIndex = 0;
+                        const runOrder = ['runA', 'runB', 'runC', 'runD', 'runE'];
+
+                        function selectRun(runId) {
+                            // Update tab states
+                            document.querySelectorAll('.run-tab').forEach(tab => {
+                                tab.classList.remove('active-run', 'bg-blue-600', 'text-white', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
+                                tab.classList.add('bg-white', 'text-gray-700', 'border');
+                            });
+
+                            if (runId === 'overview') {
+                                document.getElementById('single-run-container').classList.add('hidden');
+                                document.getElementById('overview-container').classList.remove('hidden');
+                                document.getElementById('tab-overview').classList.add('active-run', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+                                document.getElementById('tab-overview').classList.remove('bg-white', 'text-gray-700', 'border');
+                                updateStats('overview');
+                            } else {
+                                document.getElementById('single-run-container').classList.remove('hidden');
+                                document.getElementById('overview-container').classList.add('hidden');
+                                document.getElementById(`tab-${runId}`).classList.add('active-run', 'bg-blue-600', 'text-white');
+                                document.getElementById(`tab-${runId}`).classList.remove('bg-white', 'text-gray-700', 'border');
+                                updateRunDisplay(runId);
+                                updateStats(runId);
+                                currentRunIndex = runOrder.indexOf(runId);
+                                updateRunCounter();
+                            }
+                        }
+
+                        function updateRunDisplay(runId) {
+                            const data = runData[runId];
+                            document.getElementById('run-title').textContent = data.title;
+                            document.getElementById('run-badge').textContent = data.badge;
+                            document.getElementById('performance-badge').textContent = data.performance;
+                            document.getElementById('performance-badge').className = `px-3 py-1 rounded-full text-sm font-medium ${data.performanceClass}`;
+                            document.getElementById('run-description').textContent = data.description;
+                            document.getElementById('animation-label').textContent = data.label;
+                            document.getElementById('robot-path').setAttribute('d', data.path);
+                            document.getElementById('robot-circle').setAttribute('fill', data.color);
+                            document.getElementById('robot-animation').setAttribute('dur', data.duration);
+                            document.getElementById('robot-animation').setAttribute('path', data.path);
+                            document.getElementById('run-notes').querySelector('p').textContent = data.notes;
+                            
+                            // Update mission details
+                            document.getElementById('primary-missions').textContent = data.missions.primary;
+                            document.getElementById('secondary-missions').textContent = data.missions.secondary;
+                            document.getElementById('backup-missions').textContent = data.missions.backup;
+                        }
+
+                        function updateStats(runId) {
+                            const statsContainer = document.getElementById('run-stats');
+                            if (runId === 'overview') {
+                                statsContainer.innerHTML = `
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-green-600">420</div>
+                                        <div class="text-xs text-gray-600">Best Score</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-blue-600">5</div>
+                                        <div class="text-xs text-gray-600">Total Runs</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">89%</div>
+                                        <div class="text-xs text-gray-600">Avg Efficiency</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-indigo-600">50</div>
+                                        <div class="text-xs text-gray-600">Total Missions</div>
+                                    </div>
+                                `;
+                            } else {
+                                const data = runData[runId];
+                                statsContainer.innerHTML = `
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-blue-600">${data.stats.points}</div>
+                                        <div class="text-xs text-gray-600">Total Points</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-green-600">${data.stats.missions}</div>
+                                        <div class="text-xs text-gray-600">Missions</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-purple-600">${data.stats.time}</div>
+                                        <div class="text-xs text-gray-600">Time Left</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-indigo-600">${data.stats.efficiency}</div>
+                                        <div class="text-xs text-gray-600">Efficiency</div>
+                                    </div>
+                                `;
+                            }
+                        }
+
+                        function updateRunCounter() {
+                            const counter = document.getElementById('run-counter');
+                            const runLetter = runOrder[currentRunIndex].replace('run', '');
+                            counter.textContent = `Run ${runLetter} (${currentRunIndex + 1} of 5)`;
+                        }
+
+                        function previousRun() {
+                            currentRunIndex = (currentRunIndex - 1 + runOrder.length) % runOrder.length;
+                            selectRun(runOrder[currentRunIndex]);
+                        }
+
+                        function nextRun() {
+                            currentRunIndex = (currentRunIndex + 1) % runOrder.length;
+                            selectRun(runOrder[currentRunIndex]);
+                        }
+
+                        // Initialize with runA
+                        updateStats('runA');
+                        updateRunCounter();
+                    </script>
                 </div>
             </div>
 

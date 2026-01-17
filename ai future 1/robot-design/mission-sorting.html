@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Sorting | AI Future Team 1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold text-blue-600">
+                        <i class="fas fa-robot mr-2"></i>AI Future Team 1
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600 font-medium transition">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="index.html" class="text-blue-600 font-medium">
+                        <i class="fas fa-cog mr-2"></i>Robot Design
+                    </a>
+                    <a href="../innovation-project/index.html" class="text-gray-700 hover:text-blue-600 font-medium transition">
+                        <i class="fas fa-lightbulb mr-2"></i>Innovation Project
+                    </a>
+                    <a href="../core-values/index.html" class="text-gray-700 hover:text-blue-600 font-medium transition">
+                        <i class="fas fa-heart mr-2"></i>Core Values
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-purple-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold mb-2">Mission Sorting</h1>
+            <p class="text-purple-100">Strategic organization and categorization of missions by action type and difficulty</p>
+        </div>
+    </section>
+
+    <!-- Strategic Mission Sorting (Enhanced Visualization) -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Strategic Mission Sorting</h3>
+
+                <!-- Overview / Legend -->
+                <div class="mb-8 grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="text-2xl font-semibold text-purple-600 mb-4">Action Type Groups</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="inline-flex items-center bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-hand-rock mr-2"></i> Push
+                            </span>
+                            <span class="inline-flex items-center bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-hand-rock text-xs mr-2"></i> Pull
+                            </span>
+                            <span class="inline-flex items-center bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-box-open mr-2"></i> Pick Up / Drop Off
+                            </span>
+                            <span class="inline-flex items-center bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-arrows-alt-v mr-2"></i> Lift
+                            </span>
+                        </div>
+
+                        <div class="mt-6">
+                            <h5 class="font-semibold text-gray-800 mb-2">Quick Counts</h5>
+                            <div class="grid grid-cols-2 gap-3 text-sm text-gray-700">
+                                <div class="bg-gray-50 p-3 rounded-lg">Push: <strong id="count-push">—</strong></div>
+                                <div class="bg-gray-50 p-3 rounded-lg">Pull: <strong id="count-pull">—</strong></div>
+                                <div class="bg-gray-50 p-3 rounded-lg">Pick/Drop: <strong id="count-pick">—</strong></div>
+                                <div class="bg-gray-50 p-3 rounded-lg">Lift: <strong id="count-lift">—</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="text-2xl font-semibold text-purple-600 mb-4">Difficulty Breakdown</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-3 h-3 bg-green-400 rounded-full"></span>
+                                    <span class="text-sm text-gray-700">Easy</span>
+                                </div>
+                                <div class="text-sm text-gray-600" id="count-easy">—</div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                                    <span class="text-sm text-gray-700">Medium</span>
+                                </div>
+                                <div class="text-sm text-gray-600" id="count-medium">—</div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                                    <span class="text-sm text-gray-700">Hard</span>
+                                </div>
+                                <div class="text-sm text-gray-600" id="count-hard">—</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-sm text-gray-600">
+                            <p class="italic">Click any mission card below to highlight which action types and difficulty it belongs to.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Mission Grid (creative mapping cards) -->
+                <div class="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl">
+                    <h5 class="text-xl font-semibold text-gray-800 mb-4 text-center">Mission Map — Types & Difficulty</h5>
+
+                    <div id="missions-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <!-- Cards are injected by script -->
+                    </div>
+
+                    <div class="mt-6 text-xs text-gray-500">
+                        Legend: <span class="inline-flex items-center px-2 py-0.5 bg-blue-100 text-blue-800 rounded mr-2">Push</span>
+                        <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded mr-2">Pull</span>
+                        <span class="inline-flex items-center px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded mr-2">Pick/Drop</span>
+                        <span class="inline-flex items-center px-2 py-0.5 bg-green-100 text-green-800 rounded mr-2">Lift</span>
+                    </div>
+                </div>
+
+                <!-- Script generates mission cards from provided lists -->
+                <script>
+                    (function() {
+                        // Action group definitions (from provided info)
+                        const push = ['m2','m12','m11','m10','m5','m6','m8'];
+                        const pull = ['m12','m10','m9'];
+                        const pickDrop = ['m2','m1','m4','m14','m15'];
+                        const lift = ['m3','m13','m7'];
+
+                        // Difficulty groups
+                        const easy = ['m2','m14','m13','m12','m5','m6'];
+                        const medium = ['m1','m15','m10','m9','m7'];
+                        const hard = ['m4','m8','m11'];
+
+                        // Build set of missions (unique)
+                        const all = new Set();
+                        [push, pull, pickDrop, lift, easy, medium, hard].forEach(arr => arr.forEach(m => all.add(m)));
+                        const missions = Array.from(all).sort((a,b) => {
+                            const numA = parseInt(a.replace(/\D/g,''),10);
+                            const numB = parseInt(b.replace(/\D/g,''),10);
+                            return numA - numB;
+                        });
+
+                        // Utility to determine membership
+                        const has = (arr, m) => arr.indexOf(m) !== -1;
+
+                        // Counters
+                        const counters = { push:0, pull:0, pick:0, lift:0, easy:0, medium:0, hard:0 };
+
+                        // Render mission cards
+                        const grid = document.getElementById('missions-grid');
+                        missions.forEach(m => {
+                            const types = [];
+                            if (has(push,m)) { types.push({label:'Push', color:'bg-blue-100 text-blue-700', icon:'fas fa-hand-rock'}); counters.push++; }
+                            if (has(pull,m)) { types.push({label:'Pull', color:'bg-indigo-100 text-indigo-700', icon:'fas fa-magnet'}); counters.pull++; }
+                            if (has(pickDrop,m)) { types.push({label:'Pick/Drop', color:'bg-yellow-100 text-yellow-700', icon:'fas fa-box-open'}); counters.pick++; }
+                            if (has(lift,m)) { types.push({label:'Lift', color:'bg-green-100 text-green-700', icon:'fas fa-arrows-alt-v'}); counters.lift++; }
+
+                            let difficulty = 'Unknown';
+                            let diffClass = 'border-gray-200';
+                            if (has(easy,m)) { difficulty = 'Easy'; diffClass = 'border-green-300'; counters.easy++; }
+                            else if (has(medium,m)) { difficulty = 'Medium'; diffClass = 'border-yellow-300'; counters.medium++; }
+                            else if (has(hard,m)) { difficulty = 'Hard'; diffClass = 'border-red-300'; counters.hard++; }
+
+                            // Create card
+                            const card = document.createElement('div');
+                            card.className = `cursor-pointer p-4 rounded-lg bg-white border ${diffClass} shadow-sm hover:shadow-md transition`;
+                            card.innerHTML = `
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="text-lg font-bold text-gray-800">${m.toUpperCase()}</div>
+                                    <div class="text-xs px-2 py-1 rounded ${difficulty === 'Easy' ? 'bg-green-100 text-green-800' : difficulty === 'Medium' ? 'bg-yellow-100 text-yellow-800' : difficulty === 'Hard' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-700'}">
+                                        ${difficulty}
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    ${types.length ? types.map(t => `<span class="inline-flex items-center ${t.color} px-2 py-0.5 rounded text-xs font-medium"><i class="${t.icon} mr-1 text-[0.7rem]"></i>${t.label}</span>`).join('') : '<span class="text-xs text-gray-400">No action tag</span>'}
+                                </div>
+                                <div class="mt-3 text-xs text-gray-500">Click to highlight</div>
+                            `;
+
+                            // Click to briefly pulse card and show combined info in a small toast (simple)
+                            card.addEventListener('click', () => {
+                                card.classList.add('ring-2','ring-purple-300');
+                                setTimeout(()=> card.classList.remove('ring-2','ring-purple-300'), 900);
+                            });
+
+                            grid.appendChild(card);
+                        });
+
+                        // Fill quick counts in the legend
+                        document.getElementById('count-push').textContent = push.length;
+                        document.getElementById('count-pull').textContent = pull.length;
+                        document.getElementById('count-pick').textContent = pickDrop.length;
+                        document.getElementById('count-lift').textContent = lift.length;
+                        document.getElementById('count-easy').textContent = easy.length;
+                        document.getElementById('count-medium').textContent = medium.length;
+                        document.getElementById('count-hard').textContent = hard.length;
+                    })();
+                </script>
+
+                <!-- Run Organization & Attachments -->
+                <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                    <h6 class="font-semibold text-gray-800 mb-3">Run Organization</h6>
+                    <p class="text-gray-700 mb-4">We labeled runs A, B, C, D, E to avoid committing to a rigid order early — any run can become our primary run depending on match performance.</p>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div><strong class="text-red-600">Red Side Team:</strong> Focus on A, B, C</div>
+                    <div><strong class="text-blue-600">Blue Side Team:</strong> Focus on D, E</div>
+                    </div>
+
+                    <div class="mt-6 grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="../run2attachment.jpg" alt="Run 2 Attachment" class="w-full h-40 object-contain rounded-lg bg-gray-50 mb-4">
+                        <h6 class="text-lg font-semibold text-purple-600 mb-2">Run 2 Setup</h6>
+                        <p class="text-sm text-gray-600">Attachment optimized for run-specific tasks in our second run.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="../run3attachment.jpg" alt="Run 3 Attachment" class="w-full h-40 object-contain rounded-lg bg-gray-50 mb-4">
+                        <h6 class="text-lg font-semibold text-blue-600 mb-2">Run 3 Setup</h6>
+                        <p class="text-sm text-gray-600">Optimized configuration for high-point missions in run three.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="../run4attachment.jpg" alt="Run 4 Attachment" class="w-full h-40 object-contain rounded-lg bg-gray-50 mb-4">
+                        <h6 class="text-lg font-semibold text-green-600 mb-2">Run 4 Setup</h6>
+                        <p class="text-sm text-gray-600">Advanced attachment for multi-step mission sequences.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 AI Future Team 1. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
